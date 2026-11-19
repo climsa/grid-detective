@@ -68,6 +68,11 @@ svg{display:block}
   background:repeating-linear-gradient(45deg,rgba(255,255,255,.18) 0 6px,transparent 6px 12px),var(--rug,#b5523b);
   box-shadow:inset 0 0 0 3px rgba(255,255,255,.55),inset 0 0 0 6px var(--rug,#b5523b),inset 0 0 0 7px rgba(255,255,255,.35)}
 .obj.seat .em{font-size:calc(var(--cell)*.5);opacity:.9}
+/* sprite PNG (src/assets/img/obj): mengisi area w×h benda; object-fit menjaga proporsi */
+.obj .spr{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:6%;box-sizing:border-box;filter:drop-shadow(0 2px 1px rgba(0,0,0,.3));pointer-events:none}
+.obj.seat .spr{opacity:.92}
+.obj.rug.spr-on{background:none;box-shadow:none;overflow:hidden}
+.obj.rug .spr{padding:0;object-fit:fill;filter:none}
 .obj.flash{animation:flash .5s}
 @keyframes flash{50%{filter:brightness(1.35);transform:scale(1.06)}}
 .roomLabel{z-index:7;align-self:end;justify-self:center;transform:translateY(60%);pointer-events:none;
