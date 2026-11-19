@@ -43,7 +43,9 @@ const MAX_HINTS=3, BASE_SCORE=1500, PEN={hint:150,check:50,accuse:200};
 
 let S=null;
 
-function cellSize(C){const w=Math.min(window.innerWidth,480)-24-16-(SET.axis?16:0);return Math.max(34,Math.min(60,Math.floor(w/C)));}
+/* Ukuran sel papan dihitung dari lebar tersedia (layar − padding .app − padding bingkai − ruang nomor sumbu).
+   Batas bawah 28px: di 320px papan 9×9 harus tetap muat; batas bawah 34px lama membuat papan melebar. */
+function cellSize(C){const w=Math.min(window.innerWidth,480)-24-16-(SET.axis?16:0);return Math.max(28,Math.min(60,Math.floor(w/C)));}
 const newSeed=()=>100000+Math.floor(Math.random()*900000);
 function startLevel(idx,seed){
   let lv=LEVELS[idx],sol=validLevels[idx],code=null;

@@ -222,6 +222,13 @@ svg{display:block}
   .bar{gap:6px}
   .sq{width:40px}
   .score{min-width:0;font-size:18px}
+  /* banner langkah: lebih kecil agar tidak melewati tepi layar (lebar aslinya ±366px) */
+  .banner{max-width:calc(100vw - 16px);gap:8px;padding:4px 14px 4px 4px}
+  .banner .n{width:36px;height:36px;font-size:22px}
+  .banner .tx{font-size:19px}
+  /* kotak kode kasus di modal: tombol turun ke baris baru bila tidak muat (teks besar di 320px) */
+  .codeBox{flex-wrap:wrap}
+  .codeBox div{flex:1 1 auto;min-width:0}
 }
 
 /* ---------- halaman pengaturan (isi layar scrSettings) ---------- */
