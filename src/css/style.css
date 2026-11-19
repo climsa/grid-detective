@@ -223,3 +223,41 @@ svg{display:block}
   .sq{width:40px}
   .score{min-width:0;font-size:18px}
 }
+
+/* ---------- halaman pengaturan (isi layar scrSettings) ---------- */
+#setPage{padding-bottom:24px}
+.sp-card{background:rgba(23,20,63,.55);border:2px solid #3b3790;border-radius:16px;padding:10px 14px;margin-bottom:12px}
+.sp-card h3{font-family:var(--fH);font-weight:400;font-size:19px;margin:4px 0 4px;color:var(--hl);letter-spacing:.3px}
+.sp-row,.sp-slide{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.sp-row{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px}
+.sp-card>:last-child{border-bottom:0}
+.sp-lbl{flex:1;min-width:0;font-weight:600;font-size:15px;line-height:1.3;overflow-wrap:anywhere}
+.sp-lbl small{display:block;font-size:12px;font-weight:500;color:#b9b3ff;margin-top:2px}
+.sp-slide .sp-lbl{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:4px}
+.sp-slide .sp-lbl b{font-family:var(--fH);font-weight:400;color:var(--hl)}
+.sp-slide input[type=range]{width:100%;height:36px;margin:0;accent-color:#3fae59;cursor:pointer}
+.sp-slide input[type=range]:disabled{opacity:.45;cursor:default}
+.sp-card .sw{width:58px;height:32px;flex:none}
+.sp-card .sw:after{width:26px;height:26px;top:3px;left:3px}
+.sp-card .sw.on:after{left:29px}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.seg button{min-height:44px;padding:6px 4px;border-radius:10px;background:#dcd9ec;color:#2b2950;font-family:var(--fH);font-size:15px;line-height:1.1;box-shadow:0 3px 0 #9f9bbd;overflow-wrap:anywhere}
+.seg button.on{background:linear-gradient(#8ee59a,#3fae59);color:#fff;box-shadow:0 3px 0 #22743a}
+.sp-note{font-size:13px;line-height:1.45;color:#e7e4ff;margin:4px 0 12px}
+#setPage .btn{width:100%;min-height:48px}
+.btn.danger{background:linear-gradient(#ff8a8a,#e04848);color:#fff;box-shadow:0 4px 0 #962626;text-shadow:0 2px 0 rgba(0,0,0,.25)}
+
+/* ukuran teks (html.ts-l / html.ts-xl) */
+html.ts-l .btn,html.ts-l .seg button{font-size:20px}
+html.ts-l .sp-lbl{font-size:18px}html.ts-l .sp-lbl small{font-size:15px}
+html.ts-l .sp-card h3{font-size:23px}html.ts-l .sp-note{font-size:16px}
+html.ts-l .hdr .ttl{font-size:26px}html.ts-l .clueBox .txt{font-size:26px}
+html.ts-l .pc .nm{font-size:18px}html.ts-l .lv .t b{font-size:20px}
+html.ts-l .sheet h2{font-size:30px}html.ts-l .sheet p{font-size:16px}
+html.ts-xl .btn,html.ts-xl .seg button{font-size:24px}
+html.ts-xl .sp-lbl{font-size:21px}html.ts-xl .sp-lbl small{font-size:17px}
+html.ts-xl .sp-card h3{font-size:27px}html.ts-xl .sp-note{font-size:19px}
+html.ts-xl .hdr .ttl{font-size:30px}html.ts-xl .clueBox .txt{font-size:30px}
+html.ts-xl .pc .nm{font-size:20px}html.ts-xl .lv .t b{font-size:23px}
+html.ts-xl .sheet h2{font-size:34px}html.ts-xl .sheet p{font-size:19px}
+

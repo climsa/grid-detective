@@ -49,6 +49,8 @@ Layar dikendalikan di `src/js/ui.js` (`go()`); tiap layar adalah `<section class
 
 **Mode acak** (default aktif): posisi orang dan clue disusun ulang setiap main, jawaban tetap tunggal (dicek solver). Tiap susunan punya **kode 6 angka** yang bisa dibagikan agar teman memainkan susunan yang sama. Mode ini bisa dimatikan di Pengaturan untuk memakai clue tetap.
 
+**Pengaturan** (tombol Pengaturan di Menu Utama, atau ikon roda gigi di dalam kasus) adalah halaman sendiri, bukan modal; tombol kembali membawa ke layar asalnya. Isinya: musik on/off + volume, efek on/off + volume, posisi acak, sorot baris/kolom ganda, coret keterangan terpenuhi, nomor baris & kolom, ukuran teks, dan reset progres (dengan konfirmasi). Semua disimpan di localStorage `dgrid:settings` dan langsung berlaku. Progres kasus ada di `dgrid:progress`.
+
 ## Struktur
 
 ```
@@ -58,7 +60,7 @@ src/data/floors.js      FLOORS: jenis lantai (pola CSS) per ruangan
 src/data/levels.js      LEVELS: data kasus (denah, benda, orang, clue tetap)
 src/js/engine.js        aturan clue, papan, dan solver
 src/js/generator.js     generator kasus acak (deterministik per seed)
-src/js/audio.js         placeholder audio (belum dipakai)
+src/js/audio.js         pengaturan audio (volume/on-off); belum ada aset audio
 src/js/router.js        placeholder router (belum dipakai; navigasi layar ada di ui.js)
 src/js/ui.js            ikon, state, render, modal, dan wiring kontrol
 src/assets/             folder aset (img/floor, img/obj, img/char, img/ui, audio/bgm, audio/sfx)

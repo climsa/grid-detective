@@ -31,7 +31,13 @@ const $=id=>document.getElementById(id);
 const portrait=p=>`<span class="emo">${p.avatar}</span><img class="por" src="src/assets/img/char/char_${p.id}.png" alt="" draggable="false" onload="this.parentNode.classList.add('has-por')" onerror="this.remove()">`;
 const store={get(k,d){try{const v=localStorage.getItem('dgrid:'+k);return v?JSON.parse(v):d;}catch(e){return d;}},
              set(k,v){try{localStorage.setItem('dgrid:'+k,JSON.stringify(v));}catch(e){}}};
-const SET=Object.assign({conflict:true,strike:true,axis:true,random:true},store.get('settings',{}));
+/* Pengaturan disimpan di satu objek 'dgrid:settings'. Kunci lama (conflict, strike, axis, random)
+   tetap terbaca; kunci baru diisi default bila belum ada. */
+const SET_DEFAULT={conflict:true,strike:true,axis:true,random:true,musicOn:true,musicVol:70,sfxOn:true,sfxVol:80,textSize:'normal'};
+const clampVol=v=>Math.min(100,Math.max(0,Math.round(+v)||0));
+const SET=Object.assign({},SET_DEFAULT,store.get('settings',{}));
+SET.musicVol=clampVol(SET.musicVol);SET.sfxVol=clampVol(SET.sfxVol);
+if(!['normal','large','xl'].includes(SET.textSize))SET.textSize='normal';
 const validLevels=LEVELS.map(lv=>{const s=solve(lv,2);if(s.length!==1)console.warn(`Kasus "${lv.id}" punya ${s.length} solusi — perbaiki clue.`);return s.length===1?s[0]:null;});
 const MAX_HINTS=3, BASE_SCORE=1500, PEN={hint:150,check:50,accuse:200};
 
@@ -358,20 +364,38 @@ function showHelp(fromIntro){
   openModal(`<h2>Aturan main</h2>${helpHTML()}<div class="row"><button class="btn pri" id="okBtn">Mengerti</button></div>`,true);
   $('okBtn').onclick=()=>{if(fromIntro&&!S.t0)showIntro();else closeModal();};
 }
-function settingsHTML(){
-  const row=(k,t)=>`<div class="set"><span>${t}</span><button class="sw${SET[k]?' on':''}" data-k="${k}" aria-label="${t}"></button></div>`;
-  return `${row('conflict','Sorot baris/kolom ganda')}${row('strike','Coret keterangan yang terpenuhi')}${row('axis','Tampilkan nomor baris & kolom')}${row('random','Posisi acak setiap main')}<p class="note">Mode acak berlaku saat kasus dimulai berikutnya.</p>`;
+/* ---------- halaman pengaturan: layar scrSettings (bukan modal), dibuka dari menu utama & dari dalam kasus ---------- */
+let setFrom='menu'; // layar asal; tombol kembali di Pengaturan kembali ke sana
+const TS_CLASS={large:'ts-l',xl:'ts-xl'};
+function applySettings(){ // menerapkan pengaturan saat ini ke tampilan & audio
+  const root=document.documentElement;
+  root.classList.remove('ts-l','ts-xl');if(TS_CLASS[SET.textSize])root.classList.add(TS_CLASS[SET.textSize]);
+  $('frame').classList.toggle('noAxis',!SET.axis);
+  if(S)root.style.setProperty('--cell',cellSize(S.b.C)+'px');
+  audioApply(SET);
+  syncSettingsUI();
 }
-function wireSettings(root){
-  root.querySelectorAll('.sw').forEach(sw=>sw.onclick=()=>{
-    const k=sw.dataset.k;SET[k]=!SET[k];sw.classList.toggle('on',SET[k]);store.set('settings',SET);
-    $('frame').classList.toggle('noAxis',!SET.axis);
-    if(S){document.documentElement.style.setProperty('--cell',cellSize(S.b.C)+'px');renderAll();}
-  });
+function syncSettingsUI(){
+  document.querySelectorAll('#setPage .sw').forEach(sw=>{const on=!!SET[sw.dataset.k];sw.classList.toggle('on',on);sw.setAttribute('aria-checked',on);});
+  document.querySelectorAll('#setPage [data-ts]').forEach(b=>{const on=b.dataset.ts===SET.textSize;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);});
+  const vm=$('vol-music'),vs=$('vol-sfx');
+  vm.value=SET.musicVol;vs.value=SET.sfxVol;vm.disabled=!SET.musicOn;vs.disabled=!SET.sfxOn;
+  $('val-music').textContent=SET.musicVol+'%';$('val-sfx').textContent=SET.sfxVol+'%';
 }
-function showSettings(){
-  openModal(`<h2>Pengaturan</h2>${settingsHTML()}<div class="row"><button class="btn pri" id="okBtn">Selesai</button></div>`);
-  wireSettings($('sheet'));$('okBtn').onclick=closeModal;
+function setSetting(k,v){
+  SET[k]=v;store.set('settings',SET);applySettings();
+  if(S&&(k==='conflict'||k==='strike'))renderAll(); // papan & keterangan memakai dua pengaturan ini
+}
+function openSettings(from){setFrom=from;syncSettingsUI();go('settings');}
+function closeSettings(){
+  go(setFrom);
+  if(setFrom==='game'&&S){document.documentElement.style.setProperty('--cell',cellSize(S.b.C)+'px');renderAll();}
+}
+function resetProgress(){
+  openModal(`<h2>Reset progres?</h2><p>Status selesai, skor, dan waktu terbaik semua kasus akan dihapus. Pengaturan tidak ikut dihapus. Tindakan ini tidak bisa dibatalkan.</p>
+    <div class="row"><button class="btn" id="mClose">Batal</button><button class="btn danger" id="yes">Hapus progres</button></div>`);
+  $('mClose').onclick=closeModal;
+  $('yes').onclick=()=>{store.set('progress',{});closeModal();toast('Progres sudah direset');};
 }
 
 /* ---------- navigasi layar: menu, Pilih Kasus, Mode Khusus, Pengaturan, Cara Main, Tentang, permainan ---------- */
@@ -437,8 +461,14 @@ $('resetBtn').onclick=()=>{
 $('hintBtn').onclick=hint;
 $('checkBtn').onclick=()=>investigate(false);
 $('helpBtn').onclick=()=>showHelp(false);
-$('setBtn').onclick=showSettings;
+$('setBtn').onclick=()=>openSettings('game');
 $('backBtn').onclick=()=>go(gameOrigin);
+$('setBack').onclick=closeSettings;
+$('resetProgBtn').onclick=resetProgress;
+document.querySelectorAll('#setPage .sw').forEach(sw=>sw.onclick=()=>setSetting(sw.dataset.k,!SET[sw.dataset.k]));
+document.querySelectorAll('#setPage input[type=range]').forEach(r=>r.oninput=()=>setSetting(r.dataset.k,clampVol(r.value)));
+document.querySelectorAll('#setPage [data-ts]').forEach(b=>b.onclick=()=>setSetting('textSize',b.dataset.ts));
+
 /* ---------- carousel: tombol kiri/kanan, roda mouse, dan drag (desktop) ---------- */
 const TR=$('track');
 function updChev(){const max=TR.scrollWidth-TR.clientWidth;$('chevL').classList.toggle('hide',TR.scrollLeft<=4);$('chevR').classList.toggle('hide',TR.scrollLeft>=max-4);}
@@ -466,4 +496,5 @@ window.addEventListener('resize',()=>{if(S)document.documentElement.style.setPro
 $('menuStart').onclick=()=>{const i=nextCaseIdx();if(i===undefined)go('levels');else playCase(i,'menu');};
 document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
 $('helpBody').innerHTML=helpHTML();
-$('settingsBody').innerHTML=settingsHTML();wireSettings($('settingsBody'));
+$('menuSettings').onclick=()=>openSettings('menu');
+applySettings();
