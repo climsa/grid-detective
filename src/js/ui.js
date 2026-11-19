@@ -25,6 +25,10 @@ document.querySelectorAll('.hex.back').forEach(b=>b.innerHTML=IC.back);
 
 /* ======================= STATE & UI ======================= */
 const $=id=>document.getElementById(id);
+/* Portrait karakter: src/assets/img/char/char_<id>.png (256×256, latar transparan).
+   Lingkaran berwarna (p.color) ada di belakangnya. Tanpa file, emoji avatar lama dipakai:
+   onload menandai induk (.has-por) agar emoji disembunyikan, onerror membuang <img>. */
+const portrait=p=>`<span class="emo">${p.avatar}</span><img class="por" src="src/assets/img/char/char_${p.id}.png" alt="" draggable="false" onload="this.parentNode.classList.add('has-por')" onerror="this.remove()">`;
 const store={get(k,d){try{const v=localStorage.getItem('dgrid:'+k);return v?JSON.parse(v):d;}catch(e){return d;}},
              set(k,v){try{localStorage.setItem('dgrid:'+k,JSON.stringify(v));}catch(e){}}};
 /* Pengaturan disimpan di satu objek 'dgrid:settings'. Kunci lama (conflict, strike, axis, random)
@@ -143,7 +147,7 @@ function renderBoard(){
     const el=document.createElement('div');
     el.className='token'+(p.victim?' victim':'')+(S.sel===p.id?' armed':'');el.style.setProperty('--c',p.color);
     el.style.gridRow=q[0]+1;el.style.gridColumn=q[1]+1;
-    el.innerHTML=`<span>${p.avatar}</span>`+(p.victim?'<span class="sk">💀</span>':'');
+    el.innerHTML=`<span class="cir"></span>${portrait(p)}`+(p.victim?'<span class="sk">💀</span>':'');
     bd.appendChild(el);
   });
 }
@@ -154,7 +158,7 @@ function renderCards(){
     const el=document.createElement('button');
     el.className='pc'+(p.victim?' victim':'')+(S.pos[p.id]?' placed':'')+(S.sel===p.id?' armed':'')+(S.focus===p.id?' focus':'');
     el.style.setProperty('--c',p.color);el.dataset.id=p.id;
-    el.innerHTML=`<div class="av">${p.avatar}</div><div class="nm">${p.name}</div><span class="ok">✓</span>${p.victim?'<span class="sk">💀</span>':''}`;
+    el.innerHTML=`<div class="av">${portrait(p)}</div><div class="nm">${p.name}</div><span class="ok">✓</span>${p.victim?'<span class="sk">💀</span>':''}`;
     el.onclick=()=>tapCard(p.id);
     tr.appendChild(el);
   });

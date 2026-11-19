@@ -88,6 +88,8 @@ Tidak ada langkah build. Cukup edit file di `src/` lalu refresh browser.
 
 Letakkan file di folder yang sesuai di `src/assets/` lalu rujuk dari CSS/JS dengan path relatif (`src/assets/img/...`). Path relatif wajib agar tetap jalan dari `file://`.
 
+**Portrait karakter:** `src/assets/img/char/char_<id>.png` (256×256, latar transparan), dengan `<id>` sama persis dengan `id` orang di `levels.js`. Dipakai di carousel dan token papan; lingkaran warna `color` tetap di belakang portrait. Korban tetap abu-abu dengan 💀. Orang tanpa file PNG otomatis kembali ke emoji `avatar`.
+
 **Sprite benda:** satu folder untuk semua kasus, `src/assets/img/obj/obj_<kind>.png`, dengan `<kind>` persis sama dengan kunci di `kinds` pada `levels.js`. Sprite mengisi seluruh area `w×h` benda (`object-fit: contain`). Karpet dan tikar (`rug`) memakai sprite bila file-nya ada; jika tidak, digambar CSS dengan warna `o.color`. Kind tanpa file PNG otomatis kembali ke emoji `kinds[].emoji`. Kunci kind harus unik lintas kasus, karena satu file dipakai semua kasus.
 
 ## Catatan
