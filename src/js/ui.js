@@ -21,6 +21,7 @@ const setIcon=(id,html)=>{document.getElementById(id).innerHTML=html;};
 setIcon('backBtn',IC.back);setIcon('setBtn',IC.gear);setIcon('undoBtn',IC.undo);setIcon('redoBtn',IC.redo);
 setIcon('eraseBtn',IC.eraser);setIcon('resetBtn',IC.reset);setIcon('checkBtn',IC.check);setIcon('markBtn',IC.x);setIcon('helpBtn',IC.help);
 document.getElementById('hintBtn').innerHTML=IC.lens;
+document.querySelectorAll('.hex.back').forEach(b=>b.innerHTML=IC.back);
 
 /* ======================= STATE & UI ======================= */
 const $=id=>document.getElementById(id);
@@ -301,7 +302,7 @@ function verdict(id){
     <button class="btn" id="listBtn">Daftar kasus</button></div>`);
   if(hasNext)$('nextBtn').onclick=()=>{closeModal();startLevel(S.idx+1);};
   if(S.code)$('againBtn').onclick=()=>{closeModal();startLevel(S.idx);};
-  $('listBtn').onclick=showLevels;
+  $('listBtn').onclick=()=>{closeModal();go('levels');};
 }
 
 function hint(){
@@ -335,8 +336,8 @@ function showIntro(){
   $('goBtn').onclick=()=>{closeModal();if(!S.t0)S.t0=Date.now();showBanner(1,'TEMPATKAN TERSANGKA');};
   $('rulesBtn').onclick=()=>showHelp(true);
 }
-function showHelp(fromIntro){
-  openModal(`<h2>Aturan main</h2><ul>
+/* ---------- Cara Main & Pengaturan (dipakai modal di permainan dan layar menu) ---------- */
+function helpHTML(){return `<ul>
       <li>Tiap <b>baris</b> dan <b>kolom</b> hanya boleh berisi <b>1 orang</b>.</li>
       <li>Perabot (sofa, kompor, rak, kasur, dll.) <b>tidak bisa ditempati</b>. <b>Karpet</b> dan <b>kursi</b> bisa.</li>
       <li>"Di samping" = bersebelahan langsung (atas/bawah/kiri/kanan) <b>di ruangan yang sama</b>. Benda di balik tembok tidak dihitung.</li>
@@ -348,30 +349,65 @@ function showHelp(fromIntro){
       <li>Penghapus: ketuk orang/tanda X untuk menghapusnya.</li>
       <li>🔍 Bantuan (maks. ${MAX_HINTS}) dan ✔ Selidiki mengurangi skor jika salah.</li>
       <li>Ketuk benda untuk melihat namanya.</li></ul>
-    <div class="row"><button class="btn pri" id="okBtn">Mengerti</button></div>`,true);
+    `;}
+function showHelp(fromIntro){
+  openModal(`<h2>Aturan main</h2>${helpHTML()}<div class="row"><button class="btn pri" id="okBtn">Mengerti</button></div>`,true);
   $('okBtn').onclick=()=>{if(fromIntro&&!S.t0)showIntro();else closeModal();};
 }
-function showSettings(){
+function settingsHTML(){
   const row=(k,t)=>`<div class="set"><span>${t}</span><button class="sw${SET[k]?' on':''}" data-k="${k}" aria-label="${t}"></button></div>`;
-  openModal(`<h2>Pengaturan</h2>
-    ${row('conflict','Sorot baris/kolom ganda')}${row('strike','Coret keterangan yang terpenuhi')}${row('axis','Tampilkan nomor baris & kolom')}${row('random','Posisi acak setiap main')}<p style="font-size:12px;margin:8px 0 0">Mode acak berlaku saat kasus dimulai berikutnya.</p>
-    <div class="row"><button class="btn pri" id="okBtn">Selesai</button></div>`);
-  $('sheet').querySelectorAll('.sw').forEach(sw=>sw.onclick=()=>{
+  return `${row('conflict','Sorot baris/kolom ganda')}${row('strike','Coret keterangan yang terpenuhi')}${row('axis','Tampilkan nomor baris & kolom')}${row('random','Posisi acak setiap main')}<p class="note">Mode acak berlaku saat kasus dimulai berikutnya.</p>`;
+}
+function wireSettings(root){
+  root.querySelectorAll('.sw').forEach(sw=>sw.onclick=()=>{
     const k=sw.dataset.k;SET[k]=!SET[k];sw.classList.toggle('on',SET[k]);store.set('settings',SET);
     $('frame').classList.toggle('noAxis',!SET.axis);
-    document.documentElement.style.setProperty('--cell',cellSize(S.b.C)+'px');renderAll();
+    if(S){document.documentElement.style.setProperty('--cell',cellSize(S.b.C)+'px');renderAll();}
   });
-  $('okBtn').onclick=closeModal;
 }
-function showLevels(){
-  const prog=store.get('progress',{});
-  openModal(`<h2>Daftar Kasus</h2><div class="levels">${LEVELS.map((lv,i)=>{
-      const pr=prog[lv.id],ok=SET.random||!!validLevels[i];
-      return `<button class="lv${ok?'':' locked'}" data-i="${i}" ${ok?'':'disabled'}><div class="n">${i+1}</div><div class="t"><b>${lv.title}</b><span>${lv.location} · ${lv.people.length} orang · ${lv.rooms.length}×${lv.rooms[0].length}</span></div><div>${pr&&pr.solved?'✅<br><small>'+(pr.score||0).toLocaleString('id-ID')+'</small>':''}</div></button>`;}).join('')}</div>
-    <div class="row"><button class="btn" id="mClose">Tutup</button></div>`);
-  $('sheet').querySelectorAll('.lv').forEach(bt=>bt.onclick=()=>{closeModal();startLevel(+bt.dataset.i);});
-  $('mClose').onclick=closeModal;
+function showSettings(){
+  openModal(`<h2>Pengaturan</h2>${settingsHTML()}<div class="row"><button class="btn pri" id="okBtn">Selesai</button></div>`);
+  wireSettings($('sheet'));$('okBtn').onclick=closeModal;
 }
+
+/* ---------- navigasi layar: menu, Pilih Kasus, Mode Khusus, Pengaturan, Cara Main, Tentang, permainan ---------- */
+const CASE_COUNT=5; // Pilih Kasus menampilkan kasus 1-5 (LEVELS[0..4]); Mode Khusus adalah entri terpisah
+const SCREENS={menu:'scrMenu',levels:'scrLevels',special:'scrSpecial',settings:'scrSettings',help:'scrHelp',about:'scrAbout',game:'scrGame'};
+const MAIN_IDX=[...Array(Math.min(CASE_COUNT,LEVELS.length)).keys()];
+const SPECIAL_IDX=LEVELS.map((_,i)=>i).filter(i=>LEVELS[i].rooms.length===9&&LEVELS[i].rooms[0].length===9);
+let gameOrigin='menu'; // layar tempat permainan dibuka; tombol kembali di permainan kembali ke sana
+const isOpenCase=i=>SET.random||!!validLevels[i]; // kasus dengan clue tetap yang cacat dikunci
+const isSolved=(i,prog)=>!!(prog[LEVELS[i].id]&&prog[LEVELS[i].id].solved);
+
+function go(name){
+  if(!SCREENS[name])return;
+  closeModal();
+  Object.entries(SCREENS).forEach(([k,id])=>$(id).classList.toggle('show',k===name));
+  if(name==='levels')renderLevels();
+  if(name==='special')renderSpecial();
+  window.scrollTo(0,0);
+}
+// kind: locked | open | done | avail (Mode Khusus selalu tersedia, tidak dikunci)
+function caseCard(i,kind){
+  const lv=LEVELS[i],pr=store.get('progress',{})[lv.id]||{};
+  const label={locked:'Terkunci',open:'Terbuka',done:'Selesai',avail:'Tersedia'}[kind];
+  const score=kind==='done'&&pr.score?`<small>${pr.score.toLocaleString('id-ID')}</small>`:'';
+  return `<button class="lv ${kind}" data-i="${i}"${kind==='locked'?' disabled':''}><div class="n">${i+1}</div><div class="t"><b>${lv.title}</b><span>${lv.location}</span><span>${lv.rooms.length}×${lv.rooms[0].length} · ${lv.people.length} orang</span></div><div class="st">${label}${score}</div></button>`;
+}
+function bindCards(el,from){el.querySelectorAll('.lv:not([disabled])').forEach(bt=>bt.onclick=()=>playCase(+bt.dataset.i,from));}
+function renderLevels(){
+  const prog=store.get('progress',{}),el=$('levelList');
+  el.innerHTML=MAIN_IDX.map(i=>caseCard(i,!isOpenCase(i)?'locked':isSolved(i,prog)?'done':'open')).join('');
+  bindCards(el,'levels');
+}
+function renderSpecial(){
+  const prog=store.get('progress',{}),el=$('specialList');
+  el.innerHTML=SPECIAL_IDX.length?SPECIAL_IDX.map(i=>caseCard(i,isSolved(i,prog)?'done':'avail')).join(''):'<p class="note">Belum ada kasus khusus.</p>';
+  bindCards(el,'special');
+}
+// kasus 1-5 pertama yang belum selesai dan terbuka; undefined bila semua sudah selesai
+function nextCaseIdx(){const prog=store.get('progress',{});return MAIN_IDX.find(i=>isOpenCase(i)&&!isSolved(i,prog));}
+function playCase(idx,from){gameOrigin=from;go('game');startLevel(idx);}
 
 let modalLocked=false;
 function openModal(html,locked){$('sheet').innerHTML=html;$('modal').classList.add('show');modalLocked=!!locked;}
@@ -398,7 +434,7 @@ $('hintBtn').onclick=hint;
 $('checkBtn').onclick=()=>investigate(false);
 $('helpBtn').onclick=()=>showHelp(false);
 $('setBtn').onclick=showSettings;
-$('backBtn').onclick=showLevels;
+$('backBtn').onclick=()=>go(gameOrigin);
 /* ---------- carousel: tombol kiri/kanan, roda mouse, dan drag (desktop) ---------- */
 const TR=$('track');
 function updChev(){const max=TR.scrollWidth-TR.clientWidth;$('chevL').classList.toggle('hide',TR.scrollLeft<=4);$('chevR').classList.toggle('hide',TR.scrollLeft>=max-4);}
@@ -422,4 +458,8 @@ $('modal').onclick=e=>{if(e.target.id==='modal'&&!modalLocked&&!S.done)closeModa
 setInterval(()=>{if(S&&!S.done)$('timer').textContent=fmt(elapsed());},1000);
 window.addEventListener('resize',()=>{if(S)document.documentElement.style.setProperty('--cell',cellSize(S.b.C)+'px');});
 
-startLevel(Math.max(0,validLevels.findIndex(Boolean)));
+/* layar awal: menu utama (scrMenu sudah tampil di index.html) */
+$('menuStart').onclick=()=>{const i=nextCaseIdx();if(i===undefined)go('levels');else playCase(i,'menu');};
+document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
+$('helpBody').innerHTML=helpHTML();
+$('settingsBody').innerHTML=settingsHTML();wireSettings($('settingsBody'));

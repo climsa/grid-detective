@@ -26,6 +26,17 @@ Semua script dimuat sebagai script biasa (bukan ES module), jadi tetap jalan dar
 | 🔍 | Bantuan (maks. 3, mengurangi skor) |
 | Tap benda | Tooltip nama benda |
 
+## Menu & navigasi
+
+Buka game → **Menu Utama**: Mulai, Pilih Kasus, Mode Khusus, Pengaturan, Cara Main, Tentang.
+
+- **Mulai** membuka kasus 1–5 pertama yang belum selesai; jika semua selesai, membuka Pilih Kasus.
+- **Pilih Kasus** menampilkan kasus 1–5 dengan status Terkunci / Terbuka / Selesai.
+- **Mode Khusus** adalah entri terpisah dan hanya memuat kasus 9×9 dari data (saat ini kasus 5). Statusnya selalu Tersedia (belum ada syarat pembukaan).
+- Tombol kembali di kiri atas selalu kembali ke layar asal. Di permainan, kembali ke Pilih Kasus atau Mode Khusus, atau ke menu jika dibuka dari Mulai.
+
+Layar dikendalikan di `src/js/ui.js` (`go()`); tiap layar adalah `<section class="scr">` di `index.html`.
+
 ## Kasus
 
 | # | Kasus | Denah | Orang |

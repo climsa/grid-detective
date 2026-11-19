@@ -9,9 +9,63 @@
 <link rel="stylesheet" href="src/css/style.css">
 </head>
 <body>
-<div class="app">
+<!-- Menu utama -->
+<section class="scr menuScr show" id="scrMenu">
+  <div class="menuInner">
+    <img class="menuLogo" src="src/assets/img/menu/menu_logo.png" alt="">
+    <h1 class="menuTitle">Detektif Grid</h1>
+    <p class="menuSub">Puzzle deduksi misteri pembunuhan</p>
+    <nav class="menuList">
+      <button class="mbtn pri" id="menuStart">Mulai</button>
+      <button class="mbtn" data-go="levels">Pilih Kasus</button>
+      <button class="mbtn" data-go="special">Mode Khusus</button>
+      <button class="mbtn" data-go="settings">Pengaturan</button>
+      <button class="mbtn" data-go="help">Cara Main</button>
+      <button class="mbtn" data-go="about">Tentang</button>
+    </nav>
+  </div>
+</section>
+
+<!-- Pilih Kasus (kasus 1-5) -->
+<section class="scr" id="scrLevels"><div class="app">
+  <div class="hdr"><span class="hexw"><button class="hex back" data-go="menu" aria-label="Kembali ke menu"></button></span><div class="ttl">Pilih Kasus</div><span class="hdrSpacer"></span></div>
+  <div class="levels" id="levelList"></div>
+</div></section>
+
+<!-- Mode Khusus (kasus 9×9, entri terpisah dari Pilih Kasus) -->
+<section class="scr" id="scrSpecial"><div class="app">
+  <div class="hdr"><span class="hexw"><button class="hex back" data-go="menu" aria-label="Kembali ke menu"></button></span><div class="ttl">Mode Khusus</div><span class="hdrSpacer"></span></div>
+  <p class="pageNote">Kasus khusus berdenah 9×9 dengan 9 orang.</p>
+  <div class="levels" id="specialList"></div>
+</div></section>
+
+<!-- Pengaturan -->
+<section class="scr" id="scrSettings"><div class="app">
+  <div class="hdr"><span class="hexw"><button class="hex back" data-go="menu" aria-label="Kembali ke menu"></button></span><div class="ttl">Pengaturan</div><span class="hdrSpacer"></span></div>
+  <div class="pageBody" id="settingsBody"></div>
+</div></section>
+
+<!-- Cara Main -->
+<section class="scr" id="scrHelp"><div class="app">
+  <div class="hdr"><span class="hexw"><button class="hex back" data-go="menu" aria-label="Kembali ke menu"></button></span><div class="ttl">Cara Main</div><span class="hdrSpacer"></span></div>
+  <img class="pageImg" src="src/assets/img/menu/cara_main.png" alt="">
+  <div class="pageBody" id="helpBody"></div>
+</div></section>
+
+<!-- Tentang -->
+<section class="scr" id="scrAbout"><div class="app">
+  <div class="hdr"><span class="hexw"><button class="hex back" data-go="menu" aria-label="Kembali ke menu"></button></span><div class="ttl">Tentang</div><span class="hdrSpacer"></span></div>
+  <img class="pageImg pageImgSm" src="src/assets/img/menu/tentang.png" alt="">
+  <div class="pageBody">
+    <p>Detektif Grid adalah game puzzle deduksi misteri pembunuhan berbasis grid, mirip sudoku, dengan cerita dan karakter.</p>
+    <p>Tempatkan semua orang di denah sesuai keterangan mereka, lalu tunjuk pelakunya: yang sendirian bersama korban di satu ruangan.</p>
+  </div>
+</div></section>
+
+<!-- Permainan -->
+<section class="scr" id="scrGame"><div class="app">
   <div class="hdr">
-    <span class="hexw"><button class="hex" id="backBtn" aria-label="Daftar kasus"></button></span>
+    <span class="hexw"><button class="hex" id="backBtn" aria-label="Kembali"></button></span>
     <div class="ttl" id="caseName">–<small id="caseSub"></small></div>
     <span class="hexw"><button class="hex" id="setBtn" aria-label="Pengaturan"></button></span>
   </div>
@@ -48,7 +102,7 @@
     <div class="tab">Keterangan!</div>
     <div class="clueBox" id="clueBox"></div>
   </div>
-</div>
+</div></section>
 
 <div class="banner" id="banner"><span class="n" id="bnN">1</span><span class="tx" id="bnT"></span></div>
 <div class="toast" id="toast"></div>
