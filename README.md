@@ -51,7 +51,7 @@ src/js/audio.js         placeholder audio (belum dipakai)
 src/js/router.js        placeholder router (belum dipakai; navigasi layar ada di ui.js)
 src/js/ui.js            ikon, state, render, modal, dan wiring kontrol
 src/assets/             folder aset (img/floor, img/obj, img/char, img/ui, audio/bgm, audio/sfx)
-                        saat ini kosong: papan memakai emoji dan pola CSS
+                        img/obj berisi sprite benda (obj_<kind>.png); kind tanpa sprite memakai emoji
 tools/engine.js         salinan engine untuk Node (verifikasi/generator offline)
 tools/gen2.js           generator clue offline untuk layout di tools/new_levels.js
 tools/new_levels.js     layout kasus 2–5 (sumber awal)
@@ -74,6 +74,8 @@ Tidak ada langkah build. Cukup edit file di `src/` lalu refresh browser.
 ## Menambah aset (opsional)
 
 Letakkan file di folder yang sesuai di `src/assets/` lalu rujuk dari CSS/JS dengan path relatif (`src/assets/img/...`). Path relatif wajib agar tetap jalan dari `file://`.
+
+**Sprite benda:** satu folder untuk semua kasus, `src/assets/img/obj/obj_<kind>.png`, dengan `<kind>` persis sama dengan kunci di `kinds` pada `levels.js`. Sprite mengisi seluruh area `w×h` benda (`object-fit: contain`). Karpet dan tikar (`rug`) memakai sprite bila file-nya ada; jika tidak, digambar CSS dengan warna `o.color`. Kind tanpa file PNG otomatis kembali ke emoji `kinds[].emoji`. Kunci kind harus unik lintas kasus, karena satu file dipakai semua kasus.
 
 ## Catatan
 

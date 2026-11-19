@@ -97,14 +97,23 @@ function renderBoard(){
   lv.objects.forEach((o,i)=>{
     const k=lv.kinds[o.kind],el=document.createElement('div');
     el.style.gridRow=`${o.r+1} / span ${o.h||1}`;el.style.gridColumn=`${o.c+1} / span ${o.w||1}`;
+    const w=o.w||1,h=o.h||1,m=Math.min(w,h);
+    el.style.setProperty('--s',m);
+    el.style.setProperty('--sx',w>h?1+(w/h-1)*.75:1);el.style.setProperty('--sy',h>w?1+(h/w-1)*.75:1);
     if(k.rug){el.className='obj rug';el.style.setProperty('--rug',o.color||'#b5523b');}
-    else{
-      const w=o.w||1,h=o.h||1,m=Math.min(w,h);
-      el.className='obj '+(k.walkable?'seat':'solid');
-      el.style.setProperty('--s',m);
-      el.style.setProperty('--sx',w>h?1+(w/h-1)*.75:1);el.style.setProperty('--sy',h>w?1+(h/w-1)*.75:1);
-      el.innerHTML=`<span class="em">${k.emoji||''}</span>`;
-    }
+    else el.className='obj '+(k.walkable?'seat':'solid');
+    // sprite: src/assets/img/obj/obj_<kind>.png, mengisi seluruh area w×h benda.
+    // Tanpa sprite: karpet/tikar kembali digambar CSS (warna o.color), benda lain kembali ke emoji.
+    const img=new Image();
+    img.className='spr';img.alt='';img.draggable=false;
+    img.onerror=()=>{
+      img.remove();
+      if(k.rug)el.classList.remove('spr-on');
+      else el.insertAdjacentHTML('beforeend',`<span class="em">${k.emoji||''}</span>`);
+    };
+    if(k.rug)el.classList.add('spr-on');
+    img.src=`src/assets/img/obj/obj_${o.kind}.png`;
+    el.appendChild(img);
     el.dataset.obj=i;bd.appendChild(el);
   });
   // label ruangan: di tepi bawah baris terlebar ruangan (seri → baris paling bawah)
