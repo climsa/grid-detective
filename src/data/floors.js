@@ -17,3 +17,11 @@ const FLOORS = {
   pooltile:'conic-gradient(#d6f0f5 25%,#c2e6ee 0 50%,#d6f0f5 0 75%,#c2e6ee 0) 0 0/calc(var(--cell)/3) calc(var(--cell)/3)',
   terracotta:'conic-gradient(#c97b56 25%,#bb6d49 0 50%,#c97b56 0 75%,#bb6d49 0) 0 0/calc(var(--cell)/2) calc(var(--cell)/2)'
 };
+
+/* Tekstur PNG: src/assets/img/floor/floor_<kunci>.png, diubin satu sel (var(--cell)).
+   PNG dipasang sebagai lapisan paling atas di atas gradient lama. Jika file sebuah
+   kunci tidak ada, lapisan gambar dilewati dan gradient lama tampil apa adanya. */
+['parquet','tiles','darkwood','stone','lilac','grate','grass','grass2','darktile',
+ 'concrete','deck','marble','lightwood','pooltile','terracotta'].forEach(k => {
+  FLOORS[k] = `url(src/assets/img/floor/floor_${k}.png) 0 0/var(--cell) var(--cell),${FLOORS[k]}`;
+});
