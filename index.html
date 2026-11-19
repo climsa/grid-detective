@@ -50,6 +50,45 @@
   </div>
 </div>
 
+<section class="page" id="setPage" aria-labelledby="setTitle">
+  <div class="hdr">
+    <span class="hexw"><button class="hex" id="setBack" aria-label="Kembali"></button></span>
+    <div class="ttl" id="setTitle">Pengaturan</div>
+    <span class="hexw sp-spacer" aria-hidden="true"></span>
+  </div>
+
+  <div class="sp-card">
+    <h3>Audio</h3>
+    <div class="sp-row"><span class="sp-lbl">Musik</span><button class="sw" id="sw-musicOn" data-k="musicOn" role="switch" aria-label="Musik"></button></div>
+    <div class="sp-slide"><label class="sp-lbl" for="vol-music">Volume musik <b id="val-music"></b></label><input type="range" id="vol-music" data-k="musicVol" min="0" max="100" step="5"></div>
+    <div class="sp-row"><span class="sp-lbl">Efek suara</span><button class="sw" id="sw-sfxOn" data-k="sfxOn" role="switch" aria-label="Efek suara"></button></div>
+    <div class="sp-slide"><label class="sp-lbl" for="vol-sfx">Volume efek <b id="val-sfx"></b></label><input type="range" id="vol-sfx" data-k="sfxVol" min="0" max="100" step="5"></div>
+  </div>
+
+  <div class="sp-card">
+    <h3>Tampilan</h3>
+    <div class="sp-slide"><span class="sp-lbl">Ukuran teks</span>
+      <div class="seg" role="group" aria-label="Ukuran teks">
+        <button data-ts="normal">Normal</button><button data-ts="large">Besar</button><button data-ts="xl">Lebih besar</button>
+      </div>
+    </div>
+    <div class="sp-row"><span class="sp-lbl">Tampilkan nomor baris &amp; kolom</span><button class="sw" id="sw-axis" data-k="axis" role="switch" aria-label="Tampilkan nomor baris dan kolom"></button></div>
+  </div>
+
+  <div class="sp-card">
+    <h3>Mode permainan</h3>
+    <div class="sp-row"><span class="sp-lbl">Posisi acak setiap main<small>Berlaku saat kasus berikutnya dimulai.</small></span><button class="sw" id="sw-random" data-k="random" role="switch" aria-label="Posisi acak setiap main"></button></div>
+    <div class="sp-row"><span class="sp-lbl">Sorot baris/kolom ganda</span><button class="sw" id="sw-conflict" data-k="conflict" role="switch" aria-label="Sorot baris atau kolom ganda"></button></div>
+    <div class="sp-row"><span class="sp-lbl">Coret keterangan yang terpenuhi</span><button class="sw" id="sw-strike" data-k="strike" role="switch" aria-label="Coret keterangan yang terpenuhi"></button></div>
+  </div>
+
+  <div class="sp-card">
+    <h3>Data</h3>
+    <p class="sp-note">Reset progres menghapus status selesai, skor, dan waktu terbaik semua kasus. Pengaturan di atas tidak ikut dihapus.</p>
+    <button class="btn danger" id="resetProgBtn">Reset progres</button>
+  </div>
+</section>
+
 <div class="banner" id="banner"><span class="n" id="bnN">1</span><span class="tx" id="bnT"></span></div>
 <div class="toast" id="toast"></div>
 <div class="modal" id="modal"><div class="sheet" id="sheet"></div></div>

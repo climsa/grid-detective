@@ -21,12 +21,19 @@ const setIcon=(id,html)=>{document.getElementById(id).innerHTML=html;};
 setIcon('backBtn',IC.back);setIcon('setBtn',IC.gear);setIcon('undoBtn',IC.undo);setIcon('redoBtn',IC.redo);
 setIcon('eraseBtn',IC.eraser);setIcon('resetBtn',IC.reset);setIcon('checkBtn',IC.check);setIcon('markBtn',IC.x);setIcon('helpBtn',IC.help);
 document.getElementById('hintBtn').innerHTML=IC.lens;
+setIcon('setBack',IC.back);
 
 /* ======================= STATE & UI ======================= */
 const $=id=>document.getElementById(id);
 const store={get(k,d){try{const v=localStorage.getItem('dgrid:'+k);return v?JSON.parse(v):d;}catch(e){return d;}},
              set(k,v){try{localStorage.setItem('dgrid:'+k,JSON.stringify(v));}catch(e){}}};
-const SET=Object.assign({conflict:true,strike:true,axis:true,random:true},store.get('settings',{}));
+/* Pengaturan disimpan di satu objek 'dgrid:settings'. Kunci lama (conflict, strike, axis, random)
+   tetap terbaca; kunci baru diisi default bila belum ada. */
+const SET_DEFAULT={conflict:true,strike:true,axis:true,random:true,musicOn:true,musicVol:70,sfxOn:true,sfxVol:80,textSize:'normal'};
+const clampVol=v=>Math.min(100,Math.max(0,Math.round(+v)||0));
+const SET=Object.assign({},SET_DEFAULT,store.get('settings',{}));
+SET.musicVol=clampVol(SET.musicVol);SET.sfxVol=clampVol(SET.sfxVol);
+if(!['normal','large','xl'].includes(SET.textSize))SET.textSize='normal';
 const validLevels=LEVELS.map(lv=>{const s=solve(lv,2);if(s.length!==1)console.warn(`Kasus "${lv.id}" punya ${s.length} solusi — perbaiki clue.`);return s.length===1?s[0]:null;});
 const MAX_HINTS=3, BASE_SCORE=1500, PEN={hint:150,check:50,accuse:200};
 
@@ -351,27 +358,54 @@ function showHelp(fromIntro){
     <div class="row"><button class="btn pri" id="okBtn">Mengerti</button></div>`,true);
   $('okBtn').onclick=()=>{if(fromIntro&&!S.t0)showIntro();else closeModal();};
 }
-function showSettings(){
-  const row=(k,t)=>`<div class="set"><span>${t}</span><button class="sw${SET[k]?' on':''}" data-k="${k}" aria-label="${t}"></button></div>`;
-  openModal(`<h2>Pengaturan</h2>
-    ${row('conflict','Sorot baris/kolom ganda')}${row('strike','Coret keterangan yang terpenuhi')}${row('axis','Tampilkan nomor baris & kolom')}${row('random','Posisi acak setiap main')}<p style="font-size:12px;margin:8px 0 0">Mode acak berlaku saat kasus dimulai berikutnya.</p>
-    <div class="row"><button class="btn pri" id="okBtn">Selesai</button></div>`);
-  $('sheet').querySelectorAll('.sw').forEach(sw=>sw.onclick=()=>{
-    const k=sw.dataset.k;SET[k]=!SET[k];sw.classList.toggle('on',SET[k]);store.set('settings',SET);
-    $('frame').classList.toggle('noAxis',!SET.axis);
-    document.documentElement.style.setProperty('--cell',cellSize(S.b.C)+'px');renderAll();
-  });
-  $('okBtn').onclick=closeModal;
+/* ---------- halaman pengaturan: layar terpisah (bukan modal), dibuka dari kasus & daftar kasus ---------- */
+let setFrom='game';
+const TS_CLASS={large:'ts-l',xl:'ts-xl'};
+function applySettings(){ // menerapkan pengaturan saat ini ke tampilan & audio
+  const root=document.documentElement;
+  root.classList.remove('ts-l','ts-xl');if(TS_CLASS[SET.textSize])root.classList.add(TS_CLASS[SET.textSize]);
+  $('frame').classList.toggle('noAxis',!SET.axis);
+  if(S)root.style.setProperty('--cell',cellSize(S.b.C)+'px');
+  audioApply(SET);
+  syncSettingsUI();
+}
+function syncSettingsUI(){
+  document.querySelectorAll('#setPage .sw').forEach(sw=>{const on=!!SET[sw.dataset.k];sw.classList.toggle('on',on);sw.setAttribute('aria-checked',on);});
+  document.querySelectorAll('#setPage [data-ts]').forEach(b=>{const on=b.dataset.ts===SET.textSize;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);});
+  const vm=$('vol-music'),vs=$('vol-sfx');
+  vm.value=SET.musicVol;vs.value=SET.sfxVol;vm.disabled=!SET.musicOn;vs.disabled=!SET.sfxOn;
+  $('val-music').textContent=SET.musicVol+'%';$('val-sfx').textContent=SET.sfxVol+'%';
+}
+function setSetting(k,v){
+  SET[k]=v;store.set('settings',SET);applySettings();
+  if(S&&(k==='conflict'||k==='strike'))renderAll(); // papan & keterangan memakai dua pengaturan ini
+}
+function openSettings(from){
+  setFrom=from;closeModal();syncSettingsUI();
+  document.body.classList.add('pg-settings');window.scrollTo(0,0);
+}
+function closeSettings(){
+  document.body.classList.remove('pg-settings');
+  if(setFrom==='list')showLevels();
+  else if(S)renderAll();
+}
+function resetProgress(){
+  openModal(`<h2>Reset progres?</h2><p>Status selesai, skor, dan waktu terbaik semua kasus akan dihapus. Pengaturan tidak ikut dihapus. Tindakan ini tidak bisa dibatalkan.</p>
+    <div class="row"><button class="btn" id="mClose">Batal</button><button class="btn danger" id="yes">Hapus progres</button></div>`);
+  $('mClose').onclick=closeModal;
+  $('yes').onclick=()=>{store.set('progress',{});closeModal();toast('Progres sudah direset');};
 }
 function showLevels(){
   const prog=store.get('progress',{});
   openModal(`<h2>Daftar Kasus</h2><div class="levels">${LEVELS.map((lv,i)=>{
       const pr=prog[lv.id],ok=SET.random||!!validLevels[i];
       return `<button class="lv${ok?'':' locked'}" data-i="${i}" ${ok?'':'disabled'}><div class="n">${i+1}</div><div class="t"><b>${lv.title}</b><span>${lv.location} · ${lv.people.length} orang · ${lv.rooms.length}×${lv.rooms[0].length}</span></div><div>${pr&&pr.solved?'✅<br><small>'+(pr.score||0).toLocaleString('id-ID')+'</small>':''}</div></button>`;}).join('')}</div>
-    <div class="row"><button class="btn" id="mClose">Tutup</button></div>`);
+    <div class="row"><button class="btn" id="setLvBtn">⚙️ Pengaturan</button><button class="btn" id="mClose">Tutup</button></div>`);
   $('sheet').querySelectorAll('.lv').forEach(bt=>bt.onclick=()=>{closeModal();startLevel(+bt.dataset.i);});
+  $('setLvBtn').onclick=()=>openSettings('list');
   $('mClose').onclick=closeModal;
 }
+
 
 let modalLocked=false;
 function openModal(html,locked){$('sheet').innerHTML=html;$('modal').classList.add('show');modalLocked=!!locked;}
@@ -397,8 +431,14 @@ $('resetBtn').onclick=()=>{
 $('hintBtn').onclick=hint;
 $('checkBtn').onclick=()=>investigate(false);
 $('helpBtn').onclick=()=>showHelp(false);
-$('setBtn').onclick=showSettings;
+$('setBtn').onclick=()=>openSettings('game');
 $('backBtn').onclick=showLevels;
+$('setBack').onclick=closeSettings;
+$('resetProgBtn').onclick=resetProgress;
+document.querySelectorAll('#setPage .sw').forEach(sw=>sw.onclick=()=>setSetting(sw.dataset.k,!SET[sw.dataset.k]));
+document.querySelectorAll('#setPage input[type=range]').forEach(r=>r.oninput=()=>setSetting(r.dataset.k,clampVol(r.value)));
+document.querySelectorAll('#setPage [data-ts]').forEach(b=>b.onclick=()=>setSetting('textSize',b.dataset.ts));
+
 /* ---------- carousel: tombol kiri/kanan, roda mouse, dan drag (desktop) ---------- */
 const TR=$('track');
 function updChev(){const max=TR.scrollWidth-TR.clientWidth;$('chevL').classList.toggle('hide',TR.scrollLeft<=4);$('chevR').classList.toggle('hide',TR.scrollLeft>=max-4);}
@@ -422,4 +462,5 @@ $('modal').onclick=e=>{if(e.target.id==='modal'&&!modalLocked&&!S.done)closeModa
 setInterval(()=>{if(S&&!S.done)$('timer').textContent=fmt(elapsed());},1000);
 window.addEventListener('resize',()=>{if(S)document.documentElement.style.setProperty('--cell',cellSize(S.b.C)+'px');});
 
+applySettings();
 startLevel(Math.max(0,validLevels.findIndex(Boolean)));
