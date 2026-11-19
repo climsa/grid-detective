@@ -77,12 +77,13 @@ svg{display:block}
 @keyframes flash{50%{filter:brightness(1.35);transform:scale(1.06)}}
 .roomLabel{z-index:7;align-self:end;justify-self:center;transform:translateY(60%);pointer-events:none;
   background:#fff;border:2px solid var(--wall);border-radius:999px;padding:1px 8px;font-family:var(--fH);font-size:clamp(8px,calc(var(--cell)*.21),11px);letter-spacing:.4px;color:#2a2a3d;text-transform:uppercase;white-space:nowrap}
-.token{position:relative;margin:2px;border-radius:5px;z-index:5;display:grid;place-items:end center;overflow:hidden;
-  font-size:calc(var(--cell)*.74);line-height:1;background:linear-gradient(var(--c),color-mix(in srgb,var(--c) 70%,#000));
+.token{position:relative;margin:2px;border-radius:5px;z-index:5;overflow:hidden;background:#2a2a3d;
   box-shadow:inset 0 0 0 2px rgba(255,255,255,.7),0 2px 4px rgba(0,0,0,.35);animation:pop .18s ease-out;pointer-events:none}
-.token span{transform:translateY(8%)}
+/* lingkaran warna di belakang portrait; emoji lama hanya tampil bila file portrait tidak ada */
+.token .cir{position:absolute;inset:2px;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.8)}
+.token .emo{font-size:calc(var(--cell)*.6);line-height:1}
 .token.victim{filter:grayscale(.75)}
-.token .sk{position:absolute;right:1px;top:1px;font-size:11px;transform:none}
+.token .sk{position:absolute;right:0;top:0;font-size:calc(var(--cell)*.36);line-height:1;transform:none;z-index:1}
 .token.armed{box-shadow:inset 0 0 0 2px #fff,0 0 0 3px var(--gold),0 0 12px var(--gold);animation:pulse 1s infinite alternate}
 @keyframes pop{from{transform:scale(.4)}to{transform:scale(1)}}
 @keyframes pulse{to{box-shadow:inset 0 0 0 2px #fff,0 0 0 3px var(--gold),0 0 2px var(--gold)}}
@@ -109,12 +110,16 @@ svg{display:block}
 .hex.blue{background:linear-gradient(#6ab8ff,#2f7de0)}
 
 /* ---------- characters ---------- */
+.emo,.por{position:absolute;inset:0;width:100%;height:100%;display:grid;place-items:center}
+.por{object-fit:contain;pointer-events:none}
+.has-por>.emo{display:none}
+.pc .emo{font-size:36px;line-height:1}
 .carousel{position:relative;margin-bottom:14px}
 .track{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 24px;padding:12px 26px 6px 26px;scrollbar-width:none}
 .track::-webkit-scrollbar{display:none}
-.pc{flex:0 0 calc((100% - 24px)/4);scroll-snap-align:start;background:#dcd9ec;border-radius:8px;padding:10px 4px 8px;position:relative;
+.pc{flex:0 0 calc((100% - 24px)/4);min-width:0;scroll-snap-align:start;background:#dcd9ec;border-radius:8px;padding:10px 4px 8px;position:relative;
   box-shadow:0 4px 0 #9f9bbd;transition:transform .15s,background .15s;color:#2b2950}
-.pc .av{width:60px;height:60px;margin:0 auto 6px;border-radius:50%;display:grid;place-items:center;font-size:36px;background:var(--c);box-shadow:inset 0 -4px 0 rgba(0,0,0,.12)}
+.pc .av{position:relative;overflow:hidden;width:min(60px,100%);aspect-ratio:1/1;margin:0 auto 6px;border-radius:50%;background:var(--c);box-shadow:inset 0 -4px 0 rgba(0,0,0,.12)}
 .pc .nm{font-family:var(--fH);font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pc .ok{position:absolute;top:0;right:0;width:26px;height:26px;background:#3fae59;color:#fff;border-radius:0 8px 0 8px;display:none;place-items:center;font-size:15px;font-weight:700}
 .pc.placed .ok{display:grid}
