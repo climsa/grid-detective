@@ -180,11 +180,47 @@ svg{display:block}
 .sw:after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:left .15s}
 .sw.on{background:#3fae59}.sw.on:after{left:25px}
 
-/* ---------- halaman pengaturan (layar terpisah; body.pg-settings menampilkannya) ---------- */
-.page{display:none;max-width:480px;margin:0 auto;padding:0 12px 24px}
-body.pg-settings .page{display:block}
-body.pg-settings .app{display:none}
-.sp-spacer{width:48px}
+/* ---------- layar: menu utama & halaman (.scr hanya satu yang .show) ---------- */
+.scr{display:none}
+.scr.show{display:block}
+.menuScr{background:#17143f url("../assets/img/menu/menu_bg_portrait.png") center top/cover no-repeat;min-height:calc(100vh - 24px)}
+@media (min-width:720px){.menuScr{background-image:linear-gradient(rgba(23,20,63,.5),rgba(23,20,63,.5)),url("../assets/img/menu/menu_bg_landscape.png")}}
+.menuInner{max-width:480px;margin:0 auto;padding:28px 16px 36px;display:flex;flex-direction:column;align-items:center}
+.menuLogo{width:clamp(110px,34vw,160px);height:auto;filter:drop-shadow(0 6px 0 rgba(0,0,0,.35))}
+.menuTitle{margin:12px 0 0;font-family:var(--fH);font-weight:400;font-size:clamp(34px,10vw,46px);line-height:1.05;letter-spacing:.5px;text-align:center;text-shadow:0 4px 0 rgba(0,0,0,.4)}
+.menuSub{margin:6px 0 24px;font-size:14px;font-weight:600;color:#cbc6ff;text-align:center}
+.menuList{width:100%;max-width:300px;display:flex;flex-direction:column;gap:12px}
+.mbtn{width:100%;padding:13px 12px;border-radius:14px;font-family:var(--fH);font-size:20px;text-align:center;background:#dcd9ec;color:#2b2950;box-shadow:0 5px 0 #9f9bbd;transition:transform .08s}
+.mbtn:active{transform:translateY(3px);box-shadow:0 2px 0 #9f9bbd}
+.mbtn.pri{background:linear-gradient(#8ee59a,#3fae59);color:#fff;box-shadow:0 5px 0 #22743a;text-shadow:0 2px 0 rgba(0,0,0,.25)}
+.hdrSpacer{width:48px;flex:none}
+.pageNote{margin:4px 2px 0;font-size:14px;color:#cbc6ff}
+.pageImg{display:block;width:min(100%,240px);height:auto;margin:10px auto 6px;border-radius:16px;box-shadow:0 6px 0 rgba(0,0,0,.3)}
+.pageImg.pageImgSm{width:160px}
+.pageBody{padding:6px 2px 16px}
+.pageBody p{margin:0 0 10px;line-height:1.5;color:#e7e4ff}
+.pageBody ul{padding-left:18px;margin:8px 0;line-height:1.5;color:#e7e4ff}
+.note{font-size:12px;margin:8px 0 0;color:#e7e4ff}
+.lv{cursor:pointer}
+.lv:disabled{cursor:not-allowed}
+.lv .t span{display:block}
+.lv .t{min-width:0}
+.lv .st{flex:none;min-width:70px;text-align:center;font-family:var(--fH);font-size:13px;line-height:1.15;padding:5px 8px;border-radius:999px;background:#6b6890;color:#fff;white-space:nowrap}
+.lv .st small{display:block;font-family:var(--fB);font-size:11px;font-weight:600;opacity:.9}
+.lv.open .st{background:#3fae59}
+.lv.done .st{background:var(--gold);color:#2b2950}
+.lv.avail .st{background:#4f6fd8}
+.lv.locked .st{background:#5d5b70}
+
+/* ---------- bilah permainan pada layar sempit (360px): muat tanpa geser horizontal ---------- */
+@media (max-width:380px){
+  .bar{gap:6px}
+  .sq{width:40px}
+  .score{min-width:0;font-size:18px}
+}
+
+/* ---------- halaman pengaturan (isi layar scrSettings) ---------- */
+#setPage{padding-bottom:24px}
 .sp-card{background:rgba(23,20,63,.55);border:2px solid #3b3790;border-radius:16px;padding:10px 14px;margin-bottom:12px}
 .sp-card h3{font-family:var(--fH);font-weight:400;font-size:19px;margin:4px 0 4px;color:var(--hl);letter-spacing:.3px}
 .sp-row,.sp-slide{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.12)}
@@ -203,7 +239,7 @@ body.pg-settings .app{display:none}
 .seg button{min-height:44px;padding:6px 4px;border-radius:10px;background:#dcd9ec;color:#2b2950;font-family:var(--fH);font-size:15px;line-height:1.1;box-shadow:0 3px 0 #9f9bbd;overflow-wrap:anywhere}
 .seg button.on{background:linear-gradient(#8ee59a,#3fae59);color:#fff;box-shadow:0 3px 0 #22743a}
 .sp-note{font-size:13px;line-height:1.45;color:#e7e4ff;margin:4px 0 12px}
-.page .btn{width:100%;min-height:48px}
+#setPage .btn{width:100%;min-height:48px}
 .btn.danger{background:linear-gradient(#ff8a8a,#e04848);color:#fff;box-shadow:0 4px 0 #962626;text-shadow:0 2px 0 rgba(0,0,0,.25)}
 
 /* ukuran teks (html.ts-l / html.ts-xl) */
