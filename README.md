@@ -1,8 +1,10 @@
 # Detektif Grid
 
-Game puzzle deduksi misteri pembunuhan berbasis grid (mirip sudoku, dengan cerita dan karakter). Semua dalam satu file HTML, tanpa dependensi selain Google Fonts.
+Game puzzle deduksi misteri pembunuhan berbasis grid (mirip sudoku, dengan cerita dan karakter).
 
-**Main:** buka `index.html` di browser (atau aktifkan GitHub Pages di repo ini).
+**Main:** buka `index.html` langsung di browser (dobel-klik atau `file://`). Tidak perlu server dan tidak perlu build. Bisa juga di-host apa adanya di GitHub Pages (root repo, branch yang dipilih).
+
+Semua script dimuat sebagai script biasa (bukan ES module), jadi tetap jalan dari `file://`. Satu-satunya dependensi luar adalah Google Fonts (butuh internet; tanpa itu font fallback dipakai).
 
 ## Aturan
 
@@ -39,25 +41,41 @@ Game puzzle deduksi misteri pembunuhan berbasis grid (mirip sudoku, dengan cerit
 ## Struktur
 
 ```
-index.html            hasil build — file yang dimainkan/dibagikan
-src/shell.html        UI: HTML, CSS, logika game (placeholder /*DATA_ENGINE*/, /*GEN*/)
-src/levels-engine.js  data kasus (LEVELS), lantai, engine aturan + solver
-src/generator.js      generator kasus acak (deterministik per seed)
-tools/build.py        rakit index.html dari src/
-tools/engine.js       engine aturan untuk Node (verifikasi/generator offline)
-tools/gen2.js         generator clue offline untuk layout di tools/new_levels.js
-tools/new_levels.js   layout kasus 2–5 (sumber awal)
+index.html              shell: markup + link CSS + urutan script (file yang dibuka)
+src/css/style.css       seluruh gaya (variabel warna di :root)
+src/data/floors.js      FLOORS: jenis lantai (pola CSS) per ruangan
+src/data/levels.js      LEVELS: data kasus (denah, benda, orang, clue tetap)
+src/js/engine.js        aturan clue, papan, dan solver
+src/js/generator.js     generator kasus acak (deterministik per seed)
+src/js/audio.js         placeholder audio (belum dipakai)
+src/js/router.js        placeholder router (belum dipakai; navigasi layar ada di ui.js)
+src/js/ui.js            ikon, state, render, modal, dan wiring kontrol
+src/assets/             folder aset (img/floor, img/obj, img/char, img/ui, audio/bgm, audio/sfx)
+                        saat ini kosong: papan memakai emoji dan pola CSS
+tools/engine.js         salinan engine untuk Node (verifikasi/generator offline)
+tools/gen2.js           generator clue offline untuk layout di tools/new_levels.js
+tools/new_levels.js     layout kasus 2–5 (sumber awal)
 ```
+
+Urutan `<script>` di `index.html` penting: `floors.js` → `levels.js` → `engine.js` → `generator.js` → `audio.js` → `router.js` → `ui.js`. Semua berbagi scope global (tanpa modul), jadi nama fungsi/variabel harus unik lintas file.
 
 ## Menambah kasus
 
-1. Tambah objek baru ke array `LEVELS` di `src/levels-engine.js`:
+1. Tambah objek baru ke array `LEVELS` di `src/data/levels.js`:
    - `rooms`: peta ruangan per baris (1 huruf = 1 kotak), ukuran bebas.
-   - `roomInfo`: nama + jenis lantai tiap huruf (lihat `FLOORS`).
+   - `roomInfo`: nama + jenis lantai tiap huruf (lihat `FLOORS` di `src/data/floors.js`).
    - `kinds`: jenis benda (`walkable: true` untuk karpet/kursi; `rug`/`seat` untuk gaya tampilan).
    - `objects`: `{kind, r, c, w, h}` (0-based).
    - `people`: tersangka + 1 korban (`victim: true`), jumlah ≤ min(baris, kolom). `clue` opsional untuk mode clue tetap.
-2. `python3 tools/build.py`
-3. Buka `index.html`. Kasus dengan clue tetap yang tidak punya tepat 1 solusi ditandai di console; di mode acak, clue dibuat otomatis.
+2. Muat ulang `index.html`. Kasus dengan clue tetap yang tidak punya tepat 1 solusi ditandai di console; di mode acak, clue dibuat otomatis.
 
-Catatan: kode kasus hanya konsisten selama denah dan generator tidak berubah.
+Tidak ada langkah build. Cukup edit file di `src/` lalu refresh browser.
+
+## Menambah aset (opsional)
+
+Letakkan file di folder yang sesuai di `src/assets/` lalu rujuk dari CSS/JS dengan path relatif (`src/assets/img/...`). Path relatif wajib agar tetap jalan dari `file://`.
+
+## Catatan
+
+- Kode kasus hanya konsisten selama denah dan generator tidak berubah.
+- `tools/engine.js` adalah salinan engine untuk Node. Jika `src/js/engine.js` berubah, salinan ini harus ikut diperbarui.
