@@ -400,7 +400,7 @@ function resetProgress(){
 }
 
 /* ---------- navigasi layar: menu, Pilih Kasus, Mode Khusus, Pengaturan, Cara Main, Tentang, permainan ---------- */
-const CASE_COUNT=5; // Pilih Kasus menampilkan kasus 1-5 (LEVELS[0..4]); Mode Khusus adalah entri terpisah
+const CASE_COUNT=4; // Pilih Kasus & Mulai hanya memakai kasus 1-4 (LEVELS[0..3]); kasus 5 (LEVELS[4]) hanya di Mode Khusus
 const SCREENS={menu:'scrMenu',levels:'scrLevels',special:'scrSpecial',settings:'scrSettings',help:'scrHelp',about:'scrAbout',game:'scrGame'};
 const MAIN_IDX=[...Array(Math.min(CASE_COUNT,LEVELS.length)).keys()];
 const SPECIAL_IDX=LEVELS.map((_,i)=>i).filter(i=>LEVELS[i].rooms.length===9&&LEVELS[i].rooms[0].length===9);
@@ -434,7 +434,7 @@ function renderSpecial(){
   el.innerHTML=SPECIAL_IDX.length?SPECIAL_IDX.map(i=>caseCard(i,isSolved(i,prog)?'done':'avail')).join(''):'<p class="note">Belum ada kasus khusus.</p>';
   bindCards(el,'special');
 }
-// kasus 1-5 pertama yang belum selesai dan terbuka; undefined bila semua sudah selesai
+// kasus 1-4 pertama yang belum selesai dan terbuka; undefined bila semua sudah selesai
 function nextCaseIdx(){const prog=store.get('progress',{});return MAIN_IDX.find(i=>isOpenCase(i)&&!isSolved(i,prog));}
 function playCase(idx,from){gameOrigin=from;go('game');startLevel(idx);}
 
