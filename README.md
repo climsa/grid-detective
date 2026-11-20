@@ -92,6 +92,33 @@ Letakkan file di folder yang sesuai di `src/assets/` lalu rujuk dari CSS/JS deng
 
 **Sprite benda:** satu folder untuk semua kasus, `src/assets/img/obj/obj_<kind>.png`, dengan `<kind>` persis sama dengan kunci di `kinds` pada `levels.js`. Sprite mengisi seluruh area `w×h` benda (`object-fit: contain`). Karpet dan tikar (`rug`) memakai sprite bila file-nya ada; jika tidak, digambar CSS dengan warna `o.color`. Kind tanpa file PNG otomatis kembali ke emoji `kinds[].emoji`. Kunci kind harus unik lintas kasus, karena satu file dipakai semua kasus.
 
+## Ikon UI
+
+Semua ikon UI memakai set PNG seragam di `src/assets/img/ui/` (256×256, outline gelap dengan isi pastel). Dipasang lewat `IC` dan `ico()` di `src/js/ui.js`, dan lewat `<img class="ico">` di `index.html`. Ukuran per konteks diatur di `src/css/style.css` (`.ico`, `.hex .ico`, `.sq .ico`, `.rnd .ico`). Warna mengikuti PNG, jadi satu fungsi selalu punya warna yang sama.
+
+| File | Ikon | Fungsi | Tempat |
+|---|---|---|---|
+| `undo.png` | panah balik | Batalkan langkah | Bar papan (Batalkan) |
+| `redo.png` | panah maju | Ulangi langkah | Bar papan (Ulangi) |
+| `penghapus.png` | penghapus | Mode penghapus: ketuk orang/tanda X untuk menghapus | Bar papan |
+| `reset.png` | dua panah putar | Mulai ulang kasus | Bar papan |
+| `selidiki.png` | centang hijau | Selidiki: periksa susunan | Tombol aksi; tanda sudah terpenuhi di kartu; "bisa ditempati" di tooltip; daftar aturan |
+| `tanda-x.png` | X merah | Mode tanda X; penanda kotak kosong di papan; "tidak bisa ditempati" di tooltip | Tombol aksi, papan, tooltip, aturan |
+| `bantuan.png` | kaca pembesar | Bantuan (petunjuk posisi, dibatasi `MAX_HINTS`) | Tombol aksi; aturan |
+| `aturan.png` | tanda tanya | Aturan main | Tombol aksi (kanan) |
+| `pensil.png` | pensil | Mode pensil (simulasi, tidak dihitung) | Tombol aksi; aturan |
+| `kembali.png` | panah kiri | Kembali ke layar sebelumnya | Header semua layar |
+| `pengaturan.png` | roda gigi | Buka Pengaturan | Menu utama; header kasus |
+| `main.png` | segitiga putar | Mulai permainan | Menu utama (Mulai) |
+| `pilih-kasus.png` | folder dengan kaca pembesar | Buka Pilih Kasus | Menu utama |
+| `cara-main.png` | buku terbuka | Buka Cara Main | Menu utama |
+| `tentang.png` | info | Buka Tentang | Menu utama |
+| `suara-on.png` / `suara-off.png` | speaker berbunyi / dicoret | Status musik dan efek suara | Pengaturan (baris Musik dan Efek suara) |
+| `korban.png` | tengkorak | Penanda korban | Token dan kartu tersangka |
+| `intro-kasus.png` | detektif | Gambar di intro kasus | Modal intro kasus |
+
+Catatan: 🎲 (acak ulang kode kasus, "Main lagi") belum punya ikon di set ini dan tetap memakai emoji.
+
 ## Catatan
 
 - Kode kasus hanya konsisten selama denah dan generator tidak berubah.

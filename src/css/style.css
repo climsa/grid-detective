@@ -121,7 +121,7 @@ svg{display:block}
   box-shadow:0 4px 0 #9f9bbd;transition:transform .15s,background .15s;color:#2b2950}
 .pc .av{position:relative;overflow:hidden;width:min(60px,100%);aspect-ratio:1/1;margin:0 auto 6px;border-radius:50%;background:var(--c);box-shadow:inset 0 -4px 0 rgba(0,0,0,.12)}
 .pc .nm{font-family:var(--fH);font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.pc .ok{position:absolute;top:0;right:0;width:26px;height:26px;background:#3fae59;color:#fff;border-radius:0 8px 0 8px;display:none;place-items:center;font-size:15px;font-weight:700}
+.pc .ok{position:absolute;top:0;right:0;width:26px;height:26px;background:#fff;color:#3fae59;border-radius:0 8px 0 8px;display:none;place-items:center;font-size:15px;font-weight:700}
 .pc.placed .ok{display:grid}
 .pc.placed .av{opacity:.75}
 .pc.focus{background:#fff}
@@ -222,6 +222,13 @@ svg{display:block}
   .bar{gap:6px}
   .sq{width:40px}
   .score{min-width:0;font-size:18px}
+  /* banner langkah: lebih kecil agar tidak melewati tepi layar (lebar aslinya ±366px) */
+  .banner{max-width:calc(100vw - 16px);gap:8px;padding:4px 14px 4px 4px}
+  .banner .n{width:36px;height:36px;font-size:22px}
+  .banner .tx{font-size:19px}
+  /* kotak kode kasus di modal: tombol turun ke baris baru bila tidak muat (teks besar di 320px) */
+  .codeBox{flex-wrap:wrap}
+  .codeBox div{flex:1 1 auto;min-width:0}
 }
 
 /* ---------- halaman pengaturan (isi layar scrSettings) ---------- */
@@ -261,3 +268,16 @@ html.ts-xl .hdr .ttl{font-size:30px}html.ts-xl .clueBox .txt{font-size:30px}
 html.ts-xl .pc .nm{font-size:20px}html.ts-xl .lv .t b{font-size:23px}
 html.ts-xl .sheet h2{font-size:34px}html.ts-xl .sheet p{font-size:19px}
 
+
+/* Ikon UI (src/assets/img/ui): ukuran seragam per konteks, warna dari PNG */
+.ico{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none;-webkit-user-drag:none}
+.hex .ico{width:26px;height:26px;margin:auto}
+.sq .ico{width:26px;height:26px;margin:auto}
+.rnd .ico{width:30px;height:30px;margin:auto}
+.mark .ico{width:58%;height:58%;margin:auto}
+.pc .ok .ico{width:18px;height:18px;margin:auto}
+.sk .ico{display:inline-block;width:1em;height:1em;vertical-align:-.15em}
+.det .f .ico{width:100%;height:100%;border-radius:50%}
+.tip small .ico{display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-right:3px}
+.mbtn .ico{display:inline-block;width:24px;height:24px;vertical-align:-6px;margin-right:8px}
+.ico-snd{display:inline-block;width:24px;height:24px;vertical-align:-6px;margin-right:8px}

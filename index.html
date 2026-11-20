@@ -16,12 +16,12 @@
     <h1 class="menuTitle">Detektif Grid</h1>
     <p class="menuSub">Puzzle deduksi misteri pembunuhan</p>
     <nav class="menuList">
-      <button class="mbtn pri" id="menuStart">Mulai</button>
-      <button class="mbtn" data-go="levels">Pilih Kasus</button>
+      <button class="mbtn pri" id="menuStart"><img class="ico" src="src/assets/img/ui/main.png" alt="" aria-hidden="true">Mulai</button>
+      <button class="mbtn" data-go="levels"><img class="ico" src="src/assets/img/ui/pilih-kasus.png" alt="" aria-hidden="true">Pilih Kasus</button>
       <button class="mbtn" data-go="special">Mode Khusus</button>
-      <button class="mbtn" id="menuSettings">Pengaturan</button>
-      <button class="mbtn" data-go="help">Cara Main</button>
-      <button class="mbtn" data-go="about">Tentang</button>
+      <button class="mbtn" id="menuSettings"><img class="ico" src="src/assets/img/ui/pengaturan.png" alt="" aria-hidden="true">Pengaturan</button>
+      <button class="mbtn" data-go="help"><img class="ico" src="src/assets/img/ui/cara-main.png" alt="" aria-hidden="true">Cara Main</button>
+      <button class="mbtn" data-go="about"><img class="ico" src="src/assets/img/ui/tentang.png" alt="" aria-hidden="true">Tentang</button>
     </nav>
   </div>
 </section>
@@ -45,9 +45,9 @@
 
   <div class="sp-card">
     <h3>Audio</h3>
-    <div class="sp-row"><span class="sp-lbl">Musik</span><button class="sw" id="sw-musicOn" data-k="musicOn" role="switch" aria-label="Musik"></button></div>
+    <div class="sp-row"><span class="sp-lbl"><img class="ico-snd" id="icoMusic" src="src/assets/img/ui/suara-on.png" alt="" aria-hidden="true">Musik</span><button class="sw" id="sw-musicOn" data-k="musicOn" role="switch" aria-label="Musik"></button></div>
     <div class="sp-slide"><label class="sp-lbl" for="vol-music">Volume musik <b id="val-music"></b></label><input type="range" id="vol-music" data-k="musicVol" min="0" max="100" step="5"></div>
-    <div class="sp-row"><span class="sp-lbl">Efek suara</span><button class="sw" id="sw-sfxOn" data-k="sfxOn" role="switch" aria-label="Efek suara"></button></div>
+    <div class="sp-row"><span class="sp-lbl"><img class="ico-snd" id="icoSfx" src="src/assets/img/ui/suara-on.png" alt="" aria-hidden="true">Efek suara</span><button class="sw" id="sw-sfxOn" data-k="sfxOn" role="switch" aria-label="Efek suara"></button></div>
     <div class="sp-slide"><label class="sp-lbl" for="vol-sfx">Volume efek <b id="val-sfx"></b></label><input type="range" id="vol-sfx" data-k="sfxVol" min="0" max="100" step="5"></div>
   </div>
 
@@ -116,7 +116,7 @@
 
   <div class="actions">
     <span class="hexw" id="hintW"><button class="hex blue" id="hintBtn" aria-label="Bantuan" style="position:relative"></button></span>
-    <button class="rnd y" id="penBtn" aria-label="Mode pensil (simulasi)"><span class="em">✏️</span></button>
+    <button class="rnd y" id="penBtn" aria-label="Mode pensil (simulasi)"></button>
     <button class="rnd g" id="checkBtn" aria-label="Selidiki"></button>
     <button class="rnd r" id="markBtn" aria-label="Mode tanda X"></button>
     <span class="hexw"><button class="hex" id="helpBtn" aria-label="Aturan"></button></span>
