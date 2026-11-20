@@ -19,7 +19,7 @@ module.exports = [
   ],
   people:[
     {id:'laras',name:'Laras',role:'barista',avatar:'👩‍🍳',color:'#f2a96b'},
-    {id:'pakjoko',name:'Pak Joko',role:'pemilik kedai',avatar:'👨‍🦲',color:'#e5c55a'},
+    {id:'joko',name:'Pak Joko',role:'pemilik kedai',avatar:'👨‍🦲',color:'#e5c55a'},
     {id:'dimas',name:'Dimas',role:'pelanggan tetap',avatar:'🧔',color:'#7fb8e6'},
     {id:'nadia',name:'Nadia',role:'penulis',avatar:'👩‍💻',color:'#c69be8'},
     {id:'ujang',name:'Ujang',role:'kurir',avatar:'🧑‍🔧',color:'#8fd18b'},
@@ -107,8 +107,8 @@ module.exports = [
     {kind:'sumur',r:8,c:0},{kind:'pohon',r:8,c:4},{kind:'kandang',r:8,c:7,w:2}
   ],
   people:[
-    {id:'sinden',name:'Mbak Sri',role:'sinden',avatar:'👩‍🎤',color:'#f29ac4'},
-    {id:'dalang',name:'Ki Darmo',role:'dalang',avatar:'🧓',color:'#e5c55a'},
+    {id:'sri',name:'Mbak Sri',role:'sinden',avatar:'👩‍🎤',color:'#f29ac4'},
+    {id:'darmo',name:'Ki Darmo',role:'dalang',avatar:'🧓',color:'#e5c55a'},
     {id:'tini',name:'Bu Tini',role:'juru masak',avatar:'👩‍🍳',color:'#f2a96b'},
     {id:'anton',name:'Anton',role:'fotografer',avatar:'🧑‍💻',color:'#7fa7e6'},
     {id:'galih',name:'Galih',role:'cucu Eyang',avatar:'🧑',color:'#8fd18b'},
