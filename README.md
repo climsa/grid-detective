@@ -33,6 +33,8 @@ Buka game → **Menu Utama**: Mulai, Pilih Kasus, Mode Khusus, Pengaturan, Cara 
 - **Mulai** membuka kasus 1–5 pertama yang belum selesai; jika semua selesai, membuka Pilih Kasus.
 - **Pilih Kasus** menampilkan kasus 1–5 dengan status Terkunci / Terbuka / Selesai.
 - **Mode Khusus** adalah entri terpisah dan hanya memuat kasus 9×9 dari data (saat ini kasus 5). Statusnya selalu Tersedia (belum ada syarat pembukaan).
+- Semua layar memakai tampilan portrait, di desktop maupun HP. Latar menu memakai `src/assets/img/menu/menu_bg_portrait.png` (cover) untuk semua lebar layar; konten menu dibatasi 480px dan di tengah.
+- `src/assets/img/menu/menu_bg_landscape.png` **tidak dipakai** oleh CSS maupun HTML. File tetap disimpan, tidak dihapus.
 - Tombol kembali di kiri atas selalu kembali ke layar asal. Di permainan, kembali ke Pilih Kasus atau Mode Khusus, atau ke menu jika dibuka dari Mulai.
 
 Layar dikendalikan di `src/js/ui.js` (`go()`); tiap layar adalah `<section class="scr">` di `index.html`.

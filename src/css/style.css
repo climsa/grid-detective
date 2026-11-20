@@ -188,17 +188,10 @@ svg{display:block}
 /* ---------- layar: menu utama & halaman (.scr hanya satu yang .show) ---------- */
 .scr{display:none}
 .scr.show{display:block}
-/* Latar: ilustrasi portrait (layar sempit) atau landscape (layar lebar, cover). Lapisan gradient navy paling bawah
-   jadi cadangan bila gambar tidak ada. */
+/* Latar menu: ilustrasi portrait untuk semua lebar layar (cover). Lapisan gradient navy paling bawah
+   jadi cadangan bila gambar tidak termuat. Layar selalu portrait; konten dibatasi 480px dan di tengah. */
 .menuScr{background:url("../assets/img/menu/menu_bg_portrait.png") center top/cover no-repeat,linear-gradient(180deg,var(--navy2) 0%,var(--navy) 50%,var(--deep) 100%);min-height:calc(100vh - 24px)}
-@media (min-width:720px) and (orientation:landscape){
-  .menuScr{background:linear-gradient(rgba(23,20,63,.5),rgba(23,20,63,.5)),url("../assets/img/menu/menu_bg_landscape.png") center top/cover no-repeat,linear-gradient(180deg,var(--navy2) 0%,var(--navy) 50%,var(--deep) 100%)}
-}
 .menuInner{max-width:480px;margin:0 auto;padding:28px 16px 36px;display:flex;flex-direction:column;align-items:center}
-/* ilustrasi landscape menaruh rumah di sisi kanan: blok menu & judul digeser ke area kosong di kiri */
-@media (min-width:720px) and (orientation:landscape){
-  .menuInner{margin:0 0 0 max(24px,6vw);max-width:min(440px,44vw)}
-}
 .menuLogo{width:clamp(110px,34vw,160px);height:auto;filter:drop-shadow(0 6px 0 rgba(0,0,0,.35))}
 .menuTitle{margin:12px 0 0;font-family:var(--fH);font-weight:400;font-size:clamp(34px,10vw,46px);line-height:1.05;letter-spacing:.5px;text-align:center;text-shadow:0 4px 0 rgba(0,0,0,.4)}
 .menuSub{margin:6px 0 24px;font-size:14px;font-weight:600;color:#cbc6ff;text-align:center}
