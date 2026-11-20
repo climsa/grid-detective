@@ -158,6 +158,10 @@ svg{display:block}
 .sheet h2{font-family:var(--fH);font-weight:400;margin:0 0 6px;font-size:26px;letter-spacing:.3px;text-shadow:0 3px 0 rgba(0,0,0,.35)}
 .sheet p{margin:6px 0 12px;line-height:1.45;color:#e7e4ff}
 .sheet ul{padding-left:18px;margin:8px 0;line-height:1.5;color:#e7e4ff}
+/* latar & motif di intro kasus (hanya kasus yang punya story); teks boleh turun baris, tidak terpotong */
+.story{margin:0 0 12px;padding:10px 12px;border:2px solid rgba(255,255,255,.35);border-radius:12px;background:rgba(10,8,30,.25);overflow-wrap:anywhere}
+.story p{margin:4px 0;font-size:14px}
+.story b{color:#fff}
 .det{display:flex;gap:12px;align-items:center;margin-bottom:8px}
 .det .f{flex:none;width:58px;height:58px;border-radius:50%;background:#a8302f;display:grid;place-items:center;font-size:32px;box-shadow:0 0 0 3px #fff}
 .suspects{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}

@@ -333,6 +333,7 @@ function showIntro(){
   const {lv}=S;
   openModal(`<div class="det"><div class="f">${IC.detective}</div><div><h2 style="margin:0">${lv.title}</h2><span style="color:#b9b3ff;font-weight:600;font-size:13px">Kasus ${S.idx+1} · ${lv.location}</span></div></div>
     <p>${lv.intro}</p>
+    ${lv.story?`<div class="story"><p><b>Latar:</b> ${lv.story.latar}</p><p><b>Motif:</b> ${lv.story.motif}</p></div>`:''}
     <p style="font-size:14px">${lv.people.length-1} tersangka · ${Object.keys(lv.roomInfo).length} ruangan · denah ${lv.rooms.length}×${lv.rooms[0].length}</p>
     ${S.code?`<div class="codeBox"><div><small>Kode kasus</small><b>${S.code}</b></div><button class="btn" id="rerollBtn">🎲 Acak lagi</button></div>
     <div class="codeIn"><input id="codeInput" inputmode="numeric" maxlength="6" placeholder="Punya kode dari teman?"><button class="btn" id="useCode">Pakai</button></div>`:''}
