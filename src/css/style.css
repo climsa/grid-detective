@@ -52,6 +52,7 @@ svg{display:block}
 .noAxis .axis{display:none}
 .board{display:grid;position:relative;grid-template-columns:repeat(var(--C),var(--cell));grid-template-rows:repeat(var(--R),var(--cell))}
 .cell{position:relative;outline:1px solid rgba(0,0,0,.12);outline-offset:-1px}
+.cell.noGrid{outline:none}
 .cell.tap{cursor:pointer}
 .cell.conflict:after{content:"";position:absolute;inset:0;background:rgba(255,60,60,.32);pointer-events:none;z-index:6}
 .mark{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;z-index:4}
