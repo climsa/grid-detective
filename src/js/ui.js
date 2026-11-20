@@ -96,7 +96,7 @@ function renderBoard(){
     if(nt&&nt.length&&!whoAt(r,c)){
       const ppl=nt.map(id=>lv.people.find(p=>p.id===id));
       const shown=ppl.length>4?ppl.slice(0,3):ppl;
-      el.insertAdjacentHTML('beforeend',`<div class="notes">${shown.map(p=>`<span style="--c:${p.color}">${p.avatar}</span>`).join('')}${ppl.length>4?`<span class="more">+${ppl.length-3}</span>`:''}</div>`);
+      el.insertAdjacentHTML('beforeend',`<div class="notes">${shown.map(p=>`<span style="--c:${p.color}">${portrait(p)}</span>`).join('')}${ppl.length>4?`<span class="more">+${ppl.length-3}</span>`:''}</div>`);
     }
     if(conflicts.has(r+','+c))el.classList.add('conflict');
     bd.appendChild(el);
@@ -278,7 +278,7 @@ function investigate(auto){
 function accuse(){
   const {lv}=S,sus=lv.people.filter(p=>!p.victim);
   openModal(`<h2>Semua posisi cocok!</h2><p>Sekarang tunjuk pelakunya. Siapa yang membunuh ${lv.people.find(p=>p.victim).name}?</p>
-    <div class="suspects">${sus.map(p=>`<button data-id="${p.id}"><div class="av" style="--c:${p.color}">${p.avatar}</div>${p.name}</button>`).join('')}</div>
+    <div class="suspects">${sus.map(p=>`<button data-id="${p.id}"><div class="av" style="--c:${p.color}">${portrait(p)}</div>${p.name}</button>`).join('')}</div>
     <div class="row"><button class="btn" id="mClose">Periksa lagi</button></div>`);
   $('sheet').querySelectorAll('.suspects button').forEach(bt=>bt.onclick=()=>verdict(bt.dataset.id));
   $('mClose').onclick=closeModal;
