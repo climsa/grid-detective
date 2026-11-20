@@ -82,6 +82,7 @@ Urutan `<script>` di `index.html` penting: `floors.js` → `levels.js` → `engi
    - `kinds`: jenis benda (`walkable: true` untuk karpet/kursi; `rug`/`seat` untuk gaya tampilan).
    - `objects`: `{kind, r, c, w, h}` (0-based).
    - `people`: tersangka + 1 korban (`victim: true`), jumlah ≤ min(baris, kolom). `clue` opsional untuk mode clue tetap.
+   - `story` (opsional): `{nada, latar, motif}`; ditampilkan di bawah teks intro. Tiap tersangka boleh punya `story: {rahasia, alibi, pengecoh}` (`null` bila tidak ada; belum ditampilkan di UI).
 2. Muat ulang `index.html`. Kasus dengan clue tetap yang tidak punya tepat 1 solusi ditandai di console; di mode acak, clue dibuat otomatis.
 
 Tidak ada langkah build. Cukup edit file di `src/` lalu refresh browser.

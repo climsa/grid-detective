@@ -6,6 +6,11 @@ const LEVELS = [
     title:'Malam di Vila Kenanga',
     location:'Vila Kenanga, Lembang',
     intro:'Pak Gunawan ditemukan tak bernyawa saat hujan deras. Cocokkan keterangan semua orang, lalu ungkap pelakunya!',
+    story:{
+      nada:'dark',
+      latar:'Pak Gunawan, pemilik vila tua di Lembang, ditemukan tak bernyawa saat hujan deras.',
+      motif:'warisan vila yang sedang disengketakan.'
+    },
     rooms:['LLLDDDD','LLLDDDD','LLLLLDD','PPMMMMM','PPMMMMM','PPPKKKK','PPPKKKK'],
     roomInfo:{
       L:{name:'Ruang Tamu',floor:'parquet'},
@@ -31,12 +36,12 @@ const LEVELS = [
       {kind:'kasur',r:5,c:5,w:2,h:2},{kind:'karpet',r:6,c:3,w:2,color:'#7a4f9a'}
     ],
     people:[
-      {id:'ratna', name:'Bu Ratna', role:'pemilik vila', avatar:'👩‍🦳', color:'#f2c14e', clue:[{t:'beside',v:'lampu'}]},
-      {id:'darto', name:'Pak Darto', role:'tukang kebun', avatar:'👨‍🌾', color:'#8fc97a', clue:[{t:'beside',v:'meja'}]},
-      {id:'sinta', name:'Sinta', role:'keponakan', avatar:'👩', color:'#f29ac4', clue:[{t:'on',v:'karpet'}]},
-      {id:'hendra',name:'Pak Hendra', role:'pengacara', avatar:'👨‍💼', color:'#7fa7e6', clue:[{t:'col',v:1}]},
-      {id:'sumi',  name:'Mbok Sumi', role:'juru masak', avatar:'👩‍🍳', color:'#f39b7f', clue:[{t:'room',v:'D'}]},
-      {id:'rio',   name:'Rio', role:'pianis', avatar:'🧑‍🎤', color:'#b79ce6', clue:[{t:'col',v:5}]},
+      {id:'ratna', name:'Bu Ratna', role:'pemilik vila', avatar:'👩‍🦳', color:'#f2c14e', clue:[{t:'beside',v:'lampu'}], story:{rahasia:'sudah menjual sebagian tanah diam-diam.', alibi:'menelepon notaris di kamar setelah pukul sembilan.', pengecoh:'tidak ada.'}},
+      {id:'darto', name:'Pak Darto', role:'tukang kebun', avatar:'👨‍🌾', color:'#8fc97a', clue:[{t:'beside',v:'meja'}], story:{rahasia:'pernah bertengkar dengan Gunawan soal pohon tumbang.', alibi:'membersihkan gudang alat sampai larut.', pengecoh:null}},
+      {id:'sinta', name:'Sinta', role:'keponakan', avatar:'👩', color:'#f29ac4', clue:[{t:'on',v:'karpet'}], story:{rahasia:'berutang ke Gunawan.', alibi:'ke warung dekat vila, pulang sebentar, lalu tidur.', pengecoh:null}},
+      {id:'hendra',name:'Pak Hendra', role:'pengacara', avatar:'👨‍💼', color:'#7fa7e6', clue:[{t:'col',v:1}], story:{rahasia:'memegang surat wasiat.', alibi:'membaca berkas di ruang tamu sampai hujan reda.', pengecoh:null}},
+      {id:'sumi',  name:'Mbok Sumi', role:'juru masak', avatar:'👩‍🍳', color:'#f39b7f', clue:[{t:'room',v:'D'}], story:{rahasia:'mendengar pertengkaran malam itu.', alibi:'menyiapkan teh hangat di dapur.', pengecoh:null}},
+      {id:'rio',   name:'Rio', role:'pianis', avatar:'🧑‍🎤', color:'#b79ce6', clue:[{t:'col',v:5}], story:{rahasia:'tidak punya motif jelas.', alibi:'latihan piano sampai tengah malam.', pengecoh:'sering terlihat dekat piano.'}},
       {id:'gunawan',name:'Pak Gunawan', role:'korban', avatar:'🧓', color:'#bdb5ab', victim:true}
     ]
   },
