@@ -196,9 +196,12 @@ svg{display:block}
 .menuTitle{margin:12px 0 0;font-family:var(--fH);font-weight:400;font-size:clamp(34px,10vw,46px);line-height:1.05;letter-spacing:.5px;text-align:center;text-shadow:0 4px 0 rgba(0,0,0,.4)}
 .menuSub{margin:6px 0 24px;font-size:14px;font-weight:600;color:#cbc6ff;text-align:center}
 .menuList{width:100%;max-width:300px;display:flex;flex-direction:column;gap:12px}
-.mbtn{width:100%;padding:13px 12px;border-radius:14px;font-family:var(--fH);font-size:20px;text-align:center;background:#dcd9ec;color:#2b2950;box-shadow:0 5px 0 #9f9bbd;transition:transform .08s}
+/* Latar tombol menu semi-transparan (alpha 0.7; primer 0.75) agar ilustrasi rumah di latar terlihat.
+   Teks gelap (#2b2950) tetap di atas 4.5:1 terhadap latar tombol yang sudah tercampur gambar
+   (diukur di 360 px, lihat laporan commit). Hanya gaya tombol menu yang diubah. */
+.mbtn{width:100%;padding:13px 12px;border-radius:14px;font-family:var(--fH);font-size:20px;text-align:center;background:rgba(220,217,236,.7);color:#2b2950;box-shadow:0 5px 0 #9f9bbd;transition:transform .08s}
 .mbtn:active{transform:translateY(3px);box-shadow:0 2px 0 #9f9bbd}
-.mbtn.pri{background:linear-gradient(#8ee59a,#3fae59);color:#fff;box-shadow:0 5px 0 #22743a;text-shadow:0 2px 0 rgba(0,0,0,.25)}
+.mbtn.pri{background:rgba(142,229,154,.75);color:#2b2950;box-shadow:0 5px 0 #22743a;text-shadow:0 1px 0 rgba(255,255,255,.35)}
 .hdrSpacer{width:48px;flex:none}
 .pageNote{margin:4px 2px 0;font-size:14px;color:#cbc6ff}
 .pageImg{display:block;width:min(100%,240px);height:auto;margin:10px auto 6px;border-radius:16px;box-shadow:0 6px 0 rgba(0,0,0,.3)}
