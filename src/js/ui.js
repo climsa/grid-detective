@@ -1,25 +1,19 @@
 /* UI: ikon, state permainan, render papan/kartu/keterangan, modal, dan wiring kontrol.
    Berjalan saat halaman dimuat (dijalankan di baris akhir: startLevel). Dimuat paling akhir. */
-/* ======================= ICONS ======================= */
-const ST=(d,c='#fff',w=3.4)=>`<svg viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
-const gear=(()=>{let t='';for(let i=0;i<8;i++)t+=`<rect x="10.2" y="1.5" width="3.6" height="5" rx="1" transform="rotate(${i*45} 12 12)"/>`;
-  return `<svg viewBox="0 0 24 24"><g fill="#cfe1ff">${t}<circle cx="12" cy="12" r="7"/></g><circle cx="12" cy="12" r="3" fill="#8a55d8"/></svg>`;})();
+/* ======================= ICONS =======================
+   Ikon UI memakai PNG seragam di src/assets/img/ui/ (256×256, gaya outline gelap + isi pastel).
+   Ukuran diatur CSS (.ico, .hex .ico, .sq .ico, .rnd .ico). Tabel nama file & fungsi ada di README. */
+const ICON_DIR='src/assets/img/ui/';
+const ico=(name,cls='ico')=>`<img class="${cls}" src="${ICON_DIR}${name}.png" alt="" aria-hidden="true" draggable="false">`;
 const IC={
-  back:ST('<path d="M11 5l-7 7 7 7M4.5 12H20"/>','#fff',3.6),
-  gear,
-  undo:ST('<path d="M9 13L4 8l5-5"/><path d="M4.5 8H14a6 6 0 0 1 0 12h-3"/>','#4fc3ff',3.4),
-  redo:ST('<path d="M15 13l5-5-5-5"/><path d="M19.5 8H10a6 6 0 0 0 0 12h3"/>','#4fc3ff',3.4),
-  eraser:`<svg viewBox="0 0 24 24"><g transform="rotate(-40 12 12)"><rect x="3" y="7.5" width="18" height="9" rx="2.5" fill="#fff"/><rect x="3" y="7.5" width="7.5" height="9" rx="2.5" fill="#f58fab"/><rect x="3" y="7.5" width="18" height="9" rx="2.5" fill="none" stroke="#c4c0d8" stroke-width="1"/></g></svg>`,
-  reset:ST('<path d="M20 11a8 8 0 0 0-14.3-4.6M4 13a8 8 0 0 0 14.3 4.6"/><path d="M5 2.5v4.2h4.2M19 21.5v-4.2h-4.2"/>','#ffb02e',3),
-  check:ST('<path d="M5 12.5l4.6 4.6L19 7.5"/>','#fff',4.2),
-  x:ST('<path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/>','#fff',4.2),
-  help:`<svg viewBox="0 0 24 24"><text x="12" y="18" text-anchor="middle" font-family="Lilita One,Fredoka,sans-serif" font-size="19" fill="#cfe1ff">?</text></svg>`,
-  lens:`<svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5" fill="#d9f1ff" stroke="#ffb02e" stroke-width="3"/><path d="M15 15l5.5 5.5" stroke="#8b4a1c" stroke-width="3.6" stroke-linecap="round"/></svg>`,
-  markX:`<svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="#8c3a4b" stroke-width="7.5" stroke-linecap="round"/><path d="M6 6l12 12M18 6L6 18" stroke="#f7a9b1" stroke-width="4.5" stroke-linecap="round"/></svg>`
+  back:ico('kembali'), gear:ico('pengaturan'), undo:ico('undo'), redo:ico('redo'),
+  eraser:ico('penghapus'), reset:ico('reset'), check:ico('selidiki'), x:ico('tanda-x'),
+  help:ico('aturan'), lens:ico('bantuan'), markX:ico('tanda-x'), pencil:ico('pensil'),
+  skull:ico('korban'), detective:ico('intro-kasus')
 };
 const setIcon=(id,html)=>{document.getElementById(id).innerHTML=html;};
 setIcon('backBtn',IC.back);setIcon('setBtn',IC.gear);setIcon('undoBtn',IC.undo);setIcon('redoBtn',IC.redo);
-setIcon('eraseBtn',IC.eraser);setIcon('resetBtn',IC.reset);setIcon('checkBtn',IC.check);setIcon('markBtn',IC.x);setIcon('helpBtn',IC.help);
+setIcon('eraseBtn',IC.eraser);setIcon('resetBtn',IC.reset);setIcon('checkBtn',IC.check);setIcon('markBtn',IC.x);setIcon('helpBtn',IC.help);setIcon('penBtn',IC.pencil);
 document.getElementById('hintBtn').innerHTML=IC.lens;
 document.querySelectorAll('.hex.back').forEach(b=>b.innerHTML=IC.back);
 
@@ -149,7 +143,7 @@ function renderBoard(){
     const el=document.createElement('div');
     el.className='token'+(p.victim?' victim':'')+(S.sel===p.id?' armed':'');el.style.setProperty('--c',p.color);
     el.style.gridRow=q[0]+1;el.style.gridColumn=q[1]+1;
-    el.innerHTML=`<span class="cir"></span>${portrait(p)}`+(p.victim?'<span class="sk">💀</span>':'');
+    el.innerHTML=`<span class="cir"></span>${portrait(p)}`+(p.victim?`<span class="sk">${IC.skull}</span>`:'');
     bd.appendChild(el);
   });
 }
@@ -160,7 +154,7 @@ function renderCards(){
     const el=document.createElement('button');
     el.className='pc'+(p.victim?' victim':'')+(S.pos[p.id]?' placed':'')+(S.sel===p.id?' armed':'')+(S.focus===p.id?' focus':'');
     el.style.setProperty('--c',p.color);el.dataset.id=p.id;
-    el.innerHTML=`<div class="av">${portrait(p)}</div><div class="nm">${p.name}</div><span class="ok">✓</span>${p.victim?'<span class="sk">💀</span>':''}`;
+    el.innerHTML=`<div class="av">${portrait(p)}</div><div class="nm">${p.name}</div><span class="ok">${IC.check}</span>${p.victim?`<span class="sk">${IC.skull}</span>`:''}`;
     el.onclick=()=>tapCard(p.id);
     tr.appendChild(el);
   });
@@ -252,7 +246,7 @@ function showTip(i){
   const {lv}=S,o=lv.objects[i],k=lv.kinds[o.kind],tip=$('tip'),bd=$('board');
   const objEl=bd.querySelector(`[data-obj="${i}"]`),cell=bd.querySelector('.cell').offsetWidth;
   const name=k.name.charAt(0).toUpperCase()+k.name.slice(1);
-  tip.innerHTML=`${name}<small class="${k.walkable?'ok':'no'}">${k.walkable?'✓ bisa ditempati':'✕ tidak bisa ditempati'}</small>`;
+  tip.innerHTML=`${name}<small class="${k.walkable?'ok':'no'}">${k.walkable?IC.check+' bisa ditempati':IC.x+' tidak bisa ditempati'}</small>`;
   const x=bd.offsetLeft+(o.c+(o.w||1)/2)*cell,below=o.r===0;
   tip.classList.toggle('below',below);
   tip.style.left=x+'px';
@@ -327,7 +321,7 @@ function hint(){
   const [r,c]=sol.pos[target.id],occ=whoAt(r,c);if(occ&&occ!==target.id)delete S.pos[occ];
   clearNotesOf(target.id);delete S.notes[r+','+c];S.pos[target.id]=[r,c];S.marks.delete(r+','+c);S.hints++;S.sel=null;S.focus=target.id;
   penalize(PEN.hint);
-  toast(`🔍 ${target.name} ada di baris ${r+1}, kolom ${c+1} (−${PEN.hint})`);
+  toast(`${target.name} ada di baris ${r+1}, kolom ${c+1} (−${PEN.hint})`);
   renderAll();
   if(lv.people.every(p=>S.pos[p.id]))setTimeout(()=>investigate(true),400);
 }
@@ -335,7 +329,7 @@ function hint(){
 /* ---------- modals ---------- */
 function showIntro(){
   const {lv}=S;
-  openModal(`<div class="det"><div class="f">🕵️‍♀️</div><div><h2 style="margin:0">${lv.title}</h2><span style="color:#b9b3ff;font-weight:600;font-size:13px">Kasus ${S.idx+1} · ${lv.location}</span></div></div>
+  openModal(`<div class="det"><div class="f">${IC.detective}</div><div><h2 style="margin:0">${lv.title}</h2><span style="color:#b9b3ff;font-weight:600;font-size:13px">Kasus ${S.idx+1} · ${lv.location}</span></div></div>
     <p>${lv.intro}</p>
     <p style="font-size:14px">${lv.people.length-1} tersangka · ${Object.keys(lv.roomInfo).length} ruangan · denah ${lv.rooms.length}×${lv.rooms[0].length}</p>
     ${S.code?`<div class="codeBox"><div><small>Kode kasus</small><b>${S.code}</b></div><button class="btn" id="rerollBtn">🎲 Acak lagi</button></div>
@@ -356,10 +350,10 @@ function helpHTML(){return `<ul>
       <li>Baris dihitung dari atas, kolom dari kiri.</li>
       <li>Korban hanya berdua dengan pembunuh di satu ruangan.</li></ul>
     <ul><li><b>Tempatkan</b> (mode normal, seperti sudoku): ketuk karakter, lalu ketuk kotak. Karakter tetap terpilih: ketuk kotak lain untuk memindahnya, ketuk kotaknya lagi untuk mengangkat. Ketuk kartunya lagi untuk melepas pilihan.</li>
-      <li>✏️ <b>Pensil (simulasi)</b>: pilih karakter, lalu ketuk beberapa kotak sebagai kandidat posisinya. Catatan kecil ini tidak dihitung saat diperiksa. Ketuk lagi untuk menghapus. Saat orang ditempatkan sungguhan, catatannya hilang otomatis.</li>
-      <li>✖ <b>Tanda X</b>: tandai kotak yang kamu yakini kosong.</li>
+      <li>${IC.pencil} <b>Pensil (simulasi)</b>: pilih karakter, lalu ketuk beberapa kotak sebagai kandidat posisinya. Catatan kecil ini tidak dihitung saat diperiksa. Ketuk lagi untuk menghapus. Saat orang ditempatkan sungguhan, catatannya hilang otomatis.</li>
+      <li>${IC.x} <b>Tanda X</b>: tandai kotak yang kamu yakini kosong.</li>
       <li>Penghapus: ketuk orang/tanda X untuk menghapusnya.</li>
-      <li>🔍 Bantuan (maks. ${MAX_HINTS}) dan ✔ Selidiki mengurangi skor jika salah.</li>
+      <li>${IC.lens} Bantuan (maks. ${MAX_HINTS}) dan ${IC.check} Selidiki mengurangi skor jika salah.</li>
       <li>Ketuk benda untuk melihat namanya.</li></ul>
     `;}
 function showHelp(fromIntro){
@@ -383,6 +377,8 @@ function syncSettingsUI(){
   const vm=$('vol-music'),vs=$('vol-sfx');
   vm.value=SET.musicVol;vs.value=SET.sfxVol;vm.disabled=!SET.musicOn;vs.disabled=!SET.sfxOn;
   $('val-music').textContent=SET.musicVol+'%';$('val-sfx').textContent=SET.sfxVol+'%';
+  $('icoMusic').src=ICON_DIR+(SET.musicOn?'suara-on.png':'suara-off.png');
+  $('icoSfx').src=ICON_DIR+(SET.sfxOn?'suara-on.png':'suara-off.png');
 }
 function setSetting(k,v){
   SET[k]=v;store.set('settings',SET);applySettings();
@@ -448,7 +444,7 @@ const fmt=s=>String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(
 const elapsed=()=>S.t0?Math.floor((Date.now()-S.t0)/1000):0;
 
 /* ---------- wiring ---------- */
-$('penBtn').onclick=()=>{const on=S.mode!=='note';setMode(on?'note':'place');renderAll();toast(on?'✏️ Mode pensil: simulasi posisi (tidak dihitung)':'Mode pensil mati: tempatkan sungguhan');};
+$('penBtn').onclick=()=>{const on=S.mode!=='note';setMode(on?'note':'place');renderAll();toast(on?'Mode pensil: simulasi posisi (tidak dihitung)':'Mode pensil mati: tempatkan sungguhan');};
 $('markBtn').onclick=()=>{setMode(S.mode==='mark'?'place':'mark');renderAll();};
 $('eraseBtn').onclick=()=>{setMode(S.mode==='erase'?'place':'erase');renderAll();};
 $('undoBtn').onclick=()=>{const u=S.undo.pop();if(!u||S.done)return;S.redo.push(snap());restore(u);renderAll();};
