@@ -82,6 +82,8 @@ function renderBoard(){
     const cell=b.cells[r][c],el=document.createElement('div');
     el.className='cell';el.style.gridRow=r+1;el.style.gridColumn=c+1;
     el.style.background=FLOORS[lv.roomInfo[cell.room].floor]||'#eee';
+    /* Lantai tiles & darktile tidak boleh menampilkan garis kisi sel (outline). */
+    if(['tiles','darktile'].includes(lv.roomInfo[cell.room].floor))el.classList.add('noGrid');
     const W='var(--wall)',t=4,sh=[];
     const diff=(rr,cc)=>rr<0||cc<0||rr>=b.R||cc>=b.C||b.cells[rr][cc].room!==cell.room;
     if(diff(r-1,c))sh.push(`inset 0 ${t}px 0 ${W}`);
