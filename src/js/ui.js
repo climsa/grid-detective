@@ -400,9 +400,9 @@ function resetProgress(){
 }
 
 /* ---------- navigasi layar: menu, Pilih Kasus, Mode Khusus, Pengaturan, Cara Main, Tentang, permainan ---------- */
-const CASE_COUNT=4; // Pilih Kasus & Mulai hanya memakai kasus 1-4 (LEVELS[0..3]); kasus 5 (LEVELS[4]) hanya di Mode Khusus
+const CASE_COUNT=15; // Pilih Kasus & Mulai memakai kasus 1-15 (kasus 9x9 tidak masuk daftar utama)
 const SCREENS={menu:'scrMenu',levels:'scrLevels',special:'scrSpecial',settings:'scrSettings',help:'scrHelp',about:'scrAbout',game:'scrGame'};
-const MAIN_IDX=[...Array(Math.min(CASE_COUNT,LEVELS.length)).keys()];
+const MAIN_IDX=LEVELS.map((_,i)=>i).filter(i=>!(LEVELS[i].rooms.length===9&&LEVELS[i].rooms[0].length===9)).slice(0,CASE_COUNT);
 const SPECIAL_IDX=LEVELS.map((_,i)=>i).filter(i=>LEVELS[i].rooms.length===9&&LEVELS[i].rooms[0].length===9);
 let gameOrigin='menu'; // layar tempat permainan dibuka; tombol kembali di permainan kembali ke sana
 const isOpenCase=i=>SET.random||!!validLevels[i]; // kasus dengan clue tetap yang cacat dikunci
