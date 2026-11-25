@@ -30,8 +30,8 @@ Semua script dimuat sebagai script biasa (bukan ES module), jadi tetap jalan dar
 
 Buka game → **Menu Utama**: Mulai, Pilih Kasus, Mode Khusus, Pengaturan, Cara Main, Tentang.
 
-- **Mulai** membuka kasus 1–14 pertama yang belum selesai; jika semua selesai, membuka Pilih Kasus. Mode Khusus tidak ikut dihitung.
-- **Pilih Kasus** menampilkan kasus 1–14 dengan status Terkunci / Terbuka / Selesai (`CASE_COUNT` di `src/js/ui.js`).
+- **Mulai** membuka kasus 1–15 pertama yang belum selesai; jika semua selesai, membuka Pilih Kasus. Mode Khusus tidak ikut dihitung.
+- **Pilih Kasus** menampilkan kasus 1–15 dengan status Terkunci / Terbuka / Selesai (`CASE_COUNT` di `src/js/ui.js`).
 - **Mode Khusus** adalah entri terpisah dan hanya memuat kasus 9×9 dari data (saat ini joglo-lurah); kasus 9×9 tidak ada di Pilih Kasus. Statusnya selalu Tersedia (belum ada syarat pembukaan).
 - Semua layar memakai tampilan portrait, di desktop maupun HP. Latar menu memakai `src/assets/img/menu/menu_bg_portrait.png` (cover) untuk semua lebar layar; konten menu dibatasi 480px dan di tengah.
 - `src/assets/img/menu/menu_bg_landscape.png` **tidak dipakai** oleh CSS maupun HTML. File tetap disimpan, tidak dihapus.
@@ -50,13 +50,14 @@ Layar dikendalikan di `src/js/ui.js` (`go()`); tiap layar adalah `<section class
 | 5 | Kue Terakhir di Arisan Ibu-Ibu | 6×6 | 6 |
 | 6 | Malam Terakhir di Penginapan Kaki Gunung | 6×6 | 6 |
 | 7 | Siaran Terakhir Pak Gunawan | 6×6 | 6 |
-| 8 | Kostum yang Hilang di Pentas Tujuhbelasan | 7×7 | 7 |
-| 9 | Kain Batik yang Tertukar | 7×7 | 7 |
-| 10 | Kereta Malam ke Surabaya | 7×7 | 7 |
-| 11 | Pesta Pernikahan yang Berakhir Sunyi | 8×8 | 8 |
-| 12 | Rahasia di Balik Layar Bioskop Tua | 8×8 | 8 |
-| 13 | Lomba Masak yang Kacau | 8×8 | 8 |
-| 14 | Malam Terakhir Festival Wayang Kota | 8×8 | 8 |
+| 8 | Hujan di Kebun Teh | 7×7 | 7 |
+| 9 | Kostum yang Hilang di Pentas Tujuhbelasan | 7×7 | 7 |
+| 10 | Kain Batik yang Tertukar | 7×7 | 7 |
+| 11 | Kereta Malam ke Surabaya | 7×7 | 7 |
+| 12 | Pesta Pernikahan yang Berakhir Sunyi | 8×8 | 8 |
+| 13 | Rahasia di Balik Layar Bioskop Tua | 8×8 | 8 |
+| 14 | Lomba Masak yang Kacau | 8×8 | 8 |
+| 15 | Malam Terakhir Festival Wayang Kota | 8×8 | 8 |
 | Khusus | Malam Pusaka di Rumah Joglo | 9×9 | 9 |
 
 **Mode acak** (default aktif): posisi orang dan clue disusun ulang setiap main, jawaban tetap tunggal (dicek solver). Tiap susunan punya **kode 6 angka** yang bisa dibagikan agar teman memainkan susunan yang sama. Mode ini bisa dimatikan di Pengaturan untuk memakai clue tetap.
