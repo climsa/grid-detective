@@ -30,8 +30,8 @@ Semua script dimuat sebagai script biasa (bukan ES module), jadi tetap jalan dar
 
 Buka game → **Menu Utama**: Mulai, Pilih Kasus, Mode Khusus, Pengaturan, Cara Main, Tentang.
 
-- **Mulai** membuka kasus 1–27 pertama yang belum selesai; jika semua selesai, membuka Pilih Kasus. Mode Khusus tidak ikut dihitung.
-- **Pilih Kasus** menampilkan kasus 1–27 dengan status Terkunci / Terbuka / Selesai (`CASE_COUNT` di `src/js/ui.js`).
+- **Mulai** membuka kasus 1–30 pertama yang belum selesai; jika semua selesai, membuka Pilih Kasus. Mode Khusus tidak ikut dihitung.
+- **Pilih Kasus** menampilkan kasus 1–30 dengan status Terkunci / Terbuka / Selesai (`CASE_COUNT` di `src/js/ui.js`).
 - **Mode Khusus** adalah entri terpisah dan hanya memuat kasus 9×9 dari data (saat ini joglo-lurah); kasus 9×9 tidak ada di Pilih Kasus. Statusnya selalu Tersedia (belum ada syarat pembukaan).
 - Semua layar memakai tampilan portrait, di desktop maupun HP. Latar menu memakai `src/assets/img/menu/menu_bg_portrait.png` (cover) untuk semua lebar layar; konten menu dibatasi 480px dan di tengah.
 - `src/assets/img/menu/menu_bg_landscape.png` **tidak dipakai** oleh CSS maupun HTML. File tetap disimpan, tidak dihapus.
@@ -62,6 +62,17 @@ Layar dikendalikan di `src/js/ui.js` (`go()`); tiap layar adalah `<section class
 | 17 | Opor Hilang di Hajatan Sunatan | 7×7 | 7 |
 | 18 | Pelatih Terakhir di Turnamen Futsal | 7×7 | 7 |
 | 19 | Kapal Terakhir Sebelum Badai | 7×7 | 7 |
+| 20 | Piala Hilang di Hari Lomba Sekolah | 7×7 | 7 |
+| 21 | Kondangan Salah Alamat | 8×8 | 8 |
+| 22 | Rumah Sakit Tua Sebelum Dirobohkan | 8×8 | 8 |
+| 23 | Pasar Malam Keliling | 8×8 | 8 |
+| 24 | Reuni Sekolah dan Foto Memalukan | 8×8 | 8 |
+| 25 | Surat Wasiat di Villa Puncak | 8×8 | 8 |
+| 26 | Warung Kelontong Rebutan | 8×8 | 8 |
+| 27 | Foto Pernikahan yang Tak Boleh Terbit | 8×8 | 8 |
+| 28 | Tambang Pasir Tanpa Izin | 8×8 | 8 |
+| 29 | Surat Suara di Kantor Desa | 8×8 | 8 |
+| 30 | Kontes Kucing Se-Kecamatan | 8×8 | 8 |
 | Khusus | Malam Pusaka di Rumah Joglo | 9×9 | 9 |
 
 **Mode acak** (default aktif): posisi orang dan clue disusun ulang setiap main, jawaban tetap tunggal (dicek solver). Tiap susunan punya **kode 6 angka** yang bisa dibagikan agar teman memainkan susunan yang sama. Mode ini bisa dimatikan di Pengaturan untuk memakai clue tetap.
