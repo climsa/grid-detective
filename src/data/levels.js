@@ -2651,5 +2651,1516 @@ const LEVELS = [
         "victim": true
       }
     ]
+  },
+  {
+    "id": "reuni-sekolah-foto",
+    "title": "Reuni Sekolah dan Foto Memalukan",
+    "location": "Aula SMA, Reuni Angkatan",
+    "intro": "Bu Laras ditemukan tak bernyawa di tengah reuni sekolah, dan tujuh orang lain masih berada di sana.",
+    "story": {
+      "nada": "komedi",
+      "latar": "reuni sekolah dengan layar besar yang akan memutar foto lama.",
+      "motif": "foto lama memalukan yang akan ditayangkan."
+    },
+    "rooms": [
+      "AAAAKKKK",
+      "AAAAKKKK",
+      "AAAAKKKK",
+      "AAAAKKKK",
+      "HHHHTTTT",
+      "HHHHTTTT",
+      "HHHHTTTT",
+      "HHHHTTTT"
+    ],
+    "roomInfo": {
+      "A": {
+        "name": "Aula Reuni",
+        "floor": "lightwood"
+      },
+      "K": {
+        "name": "Ruang Kelas",
+        "floor": "concrete"
+      },
+      "H": {
+        "name": "Halaman Sekolah",
+        "floor": "grass"
+      },
+      "T": {
+        "name": "Kantin Sekolah",
+        "floor": "tiles"
+      }
+    },
+    "kinds": {
+      "piano": {
+        "name": "piano",
+        "emoji": "🎹"
+      },
+      "lampu": {
+        "name": "lampu hias",
+        "emoji": "💡"
+      },
+      "kursi": {
+        "name": "kursi",
+        "emoji": "🪑",
+        "walkable": true,
+        "seat": true
+      },
+      "karpet": {
+        "name": "karpet",
+        "walkable": true,
+        "rug": true
+      },
+      "tanaman": {
+        "name": "tanaman",
+        "emoji": "🪴"
+      },
+      "mejatulis": {
+        "name": "meja tulis",
+        "emoji": "✒️"
+      },
+      "rak": {
+        "name": "rak buku",
+        "emoji": "📚"
+      },
+      "arsip": {
+        "name": "lemari arsip",
+        "emoji": "🗃️"
+      },
+      "etalase": {
+        "name": "etalase kue",
+        "emoji": "🍰"
+      },
+      "mejamakan": {
+        "name": "meja makan",
+        "emoji": "🍽️"
+      },
+      "kue": {
+        "name": "kue",
+        "emoji": "🎂"
+      },
+      "wastafel": {
+        "name": "wastafel",
+        "emoji": "🚰"
+      },
+      "pohon": {
+        "name": "pohon",
+        "emoji": "🌳"
+      },
+      "bangku": {
+        "name": "bangku",
+        "emoji": "🪑",
+        "walkable": true,
+        "seat": true
+      },
+      "sepeda": {
+        "name": "sepeda",
+        "emoji": "🚲"
+      },
+      "pot": {
+        "name": "pot bunga",
+        "emoji": "🪴"
+      }
+    },
+    "objects": [
+      {
+        "kind": "piano",
+        "r": 0,
+        "c": 0,
+        "w": 2
+      },
+      {
+        "kind": "lampu",
+        "r": 0,
+        "c": 3
+      },
+      {
+        "kind": "karpet",
+        "r": 2,
+        "c": 1,
+        "w": 2,
+        "h": 2
+      },
+      {
+        "kind": "kursi",
+        "r": 2,
+        "c": 0
+      },
+      {
+        "kind": "tanaman",
+        "r": 3,
+        "c": 3
+      },
+      {
+        "kind": "mejatulis",
+        "r": 0,
+        "c": 5,
+        "w": 2
+      },
+      {
+        "kind": "rak",
+        "r": 0,
+        "c": 7
+      },
+      {
+        "kind": "kursi",
+        "r": 2,
+        "c": 5
+      },
+      {
+        "kind": "arsip",
+        "r": 3,
+        "c": 7
+      },
+      {
+        "kind": "etalase",
+        "r": 4,
+        "c": 5,
+        "w": 2
+      },
+      {
+        "kind": "mejamakan",
+        "r": 4,
+        "c": 7
+      },
+      {
+        "kind": "kursi",
+        "r": 6,
+        "c": 5
+      },
+      {
+        "kind": "kue",
+        "r": 6,
+        "c": 7
+      },
+      {
+        "kind": "wastafel",
+        "r": 7,
+        "c": 4
+      },
+      {
+        "kind": "pohon",
+        "r": 4,
+        "c": 0
+      },
+      {
+        "kind": "bangku",
+        "r": 5,
+        "c": 2,
+        "w": 2
+      },
+      {
+        "kind": "sepeda",
+        "r": 7,
+        "c": 0
+      },
+      {
+        "kind": "pot",
+        "r": 7,
+        "c": 3
+      },
+      {
+        "kind": "tanaman",
+        "r": 6,
+        "c": 1
+      }
+    ],
+    "people": [
+      {
+        "id": "arif",
+        "name": "Arif",
+        "role": "teman sekelas",
+        "avatar": "🧑‍💼",
+        "color": "#7fa7e6",
+        "clue": [
+          {
+            "t": "row",
+            "v": 5
+          }
+        ],
+        "story": {
+          "rahasia": "pernah jadi badut kelas.",
+          "alibi": "menyapa teman lama.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "galih",
+        "name": "Galih",
+        "role": "teman sekelas",
+        "avatar": "🧑",
+        "color": "#8fd18b",
+        "clue": [
+          {
+            "t": "beside",
+            "v": "piano"
+          }
+        ],
+        "story": {
+          "rahasia": "pernah mencontek ujian.",
+          "alibi": "memotret tamu.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "melati",
+        "name": "Bu Melati",
+        "role": "anggota reuni",
+        "avatar": "👩‍🦳",
+        "color": "#bdb5ab",
+        "clue": [
+          {
+            "t": "room",
+            "v": "K"
+          },
+          {
+            "t": "col",
+            "v": 6
+          }
+        ],
+        "story": {
+          "rahasia": "pernah mengirim surat cinta salah alamat.",
+          "alibi": "mengatur kursi.",
+          "pengecoh": "wajahnya memerah saat melihat layar."
+        }
+      },
+      {
+        "id": "nadia",
+        "name": "Nadia",
+        "role": "ketua kelas",
+        "avatar": "👩‍💻",
+        "color": "#c69be8",
+        "clue": [
+          {
+            "t": "beside",
+            "v": "etalase"
+          }
+        ],
+        "story": {
+          "rahasia": "ketua kelas yang menyimpan foto itu.",
+          "alibi": "membawakan acara.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "rio",
+        "name": "Rio",
+        "role": "panitia musik",
+        "avatar": "🧑‍🎤",
+        "color": "#b79ce6",
+        "clue": [
+          {
+            "t": "beside",
+            "v": "pot"
+          }
+        ],
+        "story": {
+          "rahasia": "pernah ketahuan membolos.",
+          "alibi": "mengatur musik.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "parjo",
+        "name": "Pak Parjo",
+        "role": "peserta kemah",
+        "avatar": "👨‍🌾",
+        "color": "#b7a27a",
+        "clue": [
+          {
+            "t": "beside",
+            "v": "arsip"
+          }
+        ],
+        "story": {
+          "rahasia": "pernah mengompol di kemah sekolah.",
+          "alibi": "membagikan kaus.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "ratih",
+        "name": "Ratih",
+        "role": "alumni drama",
+        "avatar": "👩",
+        "color": "#c69be8",
+        "clue": [
+          {
+            "t": "on",
+            "v": "karpet"
+          }
+        ],
+        "story": {
+          "rahasia": "pernah jadi bintang drama sekolah yang gagal.",
+          "alibi": "membagikan minuman.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "laras",
+        "name": "Laras",
+        "role": "panitia reuni",
+        "avatar": "👩‍🍳",
+        "color": "#f2a96b",
+        "victim": true
+      }
+    ]
+  },
+  {
+    "id": "surat-wasiat-villa-puncak",
+    "title": "Surat Wasiat di Villa Puncak",
+    "location": "Villa Puncak Bukit",
+    "intro": "Bu Melati, pemilik villa, ditemukan tak bernyawa saat kabut turun, dan tujuh orang lain masih berada di sana.",
+    "story": {
+      "nada": "dark",
+      "latar": "villa di puncak bukit saat kabut turun, para kerabat berkumpul.",
+      "motif": "warisan dan surat wasiat yang berubah."
+    },
+    "rooms": [
+      "TTTTRRPP",
+      "DDRRRRPP",
+      "DDRRRRKK",
+      "DDRRKKKK",
+      "GGGGKKKK",
+      "GGGGKKKK",
+      "GGGGKKKK",
+      "GGGGGGGG"
+    ],
+    "roomInfo": {
+      "T": {
+        "name": "Teras Depan",
+        "floor": "deck"
+      },
+      "R": {
+        "name": "Ruang Tamu",
+        "floor": "parquet"
+      },
+      "P": {
+        "name": "Perpustakaan",
+        "floor": "darkwood"
+      },
+      "D": {
+        "name": "Dapur",
+        "floor": "tiles"
+      },
+      "K": {
+        "name": "Kamar Tamu",
+        "floor": "lilac"
+      },
+      "G": {
+        "name": "Garasi",
+        "floor": "concrete"
+      }
+    },
+    "kinds": {
+      "pohon": {
+        "name": "pohon",
+        "emoji": "🌳"
+      },
+      "tanaman": {
+        "name": "tanaman",
+        "emoji": "🪴"
+      },
+      "sofa": {
+        "name": "sofa",
+        "emoji": "🛋️"
+      },
+      "karpet": {
+        "name": "karpet",
+        "walkable": true,
+        "rug": true
+      },
+      "kursi": {
+        "name": "kursi",
+        "emoji": "🪑",
+        "walkable": true,
+        "seat": true
+      },
+      "lampu": {
+        "name": "lampu hias",
+        "emoji": "💡"
+      },
+      "meja": {
+        "name": "meja",
+        "emoji": "🪵"
+      },
+      "rak": {
+        "name": "rak buku",
+        "emoji": "📚"
+      },
+      "mejatulis": {
+        "name": "meja tulis",
+        "emoji": "✒️"
+      },
+      "kasur": {
+        "name": "kasur",
+        "emoji": "🛏️"
+      },
+      "lemari": {
+        "name": "lemari",
+        "emoji": "🗄️"
+      },
+      "mejamakan": {
+        "name": "meja makan",
+        "emoji": "🍽️"
+      },
+      "kompor": {
+        "name": "kompor",
+        "emoji": "🍳"
+      },
+      "wastafel": {
+        "name": "wastafel",
+        "emoji": "🚰"
+      },
+      "bangku": {
+        "name": "bangku",
+        "emoji": "🪑",
+        "walkable": true,
+        "seat": true
+      },
+      "kayu": {
+        "name": "tumpukan kayu",
+        "emoji": "🪵"
+      },
+      "sepeda": {
+        "name": "sepeda",
+        "emoji": "🚲"
+      },
+      "peti": {
+        "name": "peti",
+        "emoji": "🧰"
+      },
+      "kardus": {
+        "name": "tumpukan kardus",
+        "emoji": "📦"
+      }
+    },
+    "objects": [
+      {
+        "kind": "pohon",
+        "r": 0,
+        "c": 0
+      },
+      {
+        "kind": "tanaman",
+        "r": 0,
+        "c": 3
+      },
+      {
+        "kind": "sofa",
+        "r": 1,
+        "c": 2,
+        "w": 2
+      },
+      {
+        "kind": "karpet",
+        "r": 2,
+        "c": 2,
+        "w": 2
+      },
+      {
+        "kind": "kursi",
+        "r": 2,
+        "c": 4
+      },
+      {
+        "kind": "lampu",
+        "r": 0,
+        "c": 4
+      },
+      {
+        "kind": "meja",
+        "r": 3,
+        "c": 2
+      },
+      {
+        "kind": "rak",
+        "r": 0,
+        "c": 6,
+        "w": 2
+      },
+      {
+        "kind": "mejatulis",
+        "r": 1,
+        "c": 6
+      },
+      {
+        "kind": "kursi",
+        "r": 1,
+        "c": 7
+      },
+      {
+        "kind": "kasur",
+        "r": 2,
+        "c": 6,
+        "w": 2,
+        "h": 2
+      },
+      {
+        "kind": "lemari",
+        "r": 3,
+        "c": 4
+      },
+      {
+        "kind": "lampu",
+        "r": 4,
+        "c": 7
+      },
+      {
+        "kind": "karpet",
+        "r": 5,
+        "c": 4,
+        "w": 2,
+        "h": 2
+      },
+      {
+        "kind": "tanaman",
+        "r": 6,
+        "c": 7
+      },
+      {
+        "kind": "mejamakan",
+        "r": 1,
+        "c": 0,
+        "w": 2
+      },
+      {
+        "kind": "kompor",
+        "r": 2,
+        "c": 0
+      },
+      {
+        "kind": "wastafel",
+        "r": 3,
+        "c": 1
+      },
+      {
+        "kind": "kursi",
+        "r": 3,
+        "c": 0
+      },
+      {
+        "kind": "kayu",
+        "r": 4,
+        "c": 0,
+        "w": 2
+      },
+      {
+        "kind": "kardus",
+        "r": 4,
+        "c": 3
+      },
+      {
+        "kind": "sepeda",
+        "r": 5,
+        "c": 1
+      },
+      {
+        "kind": "peti",
+        "r": 6,
+        "c": 0
+      },
+      {
+        "kind": "kardus",
+        "r": 6,
+        "c": 3
+      },
+      {
+        "kind": "bangku",
+        "r": 7,
+        "c": 2
+      }
+    ],
+    "people": [
+      {
+        "id": "wiranto",
+        "name": "Pak Wiranto",
+        "role": "kakak",
+        "avatar": "👨‍🦳",
+        "color": "#bdb5ab",
+        "clue": [
+          {
+            "t": "on",
+            "v": "kursi"
+          }
+        ],
+        "story": {
+          "rahasia": "kakak yang merasa dilangkahi.",
+          "alibi": "membaca koran.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "hendra",
+        "name": "Pak Hendra",
+        "role": "pengacara",
+        "avatar": "👨‍💼",
+        "color": "#7fa7e6",
+        "clue": [
+          {
+            "t": "on",
+            "v": "karpet"
+          }
+        ],
+        "story": {
+          "rahasia": "pengacara yang mengubah draf.",
+          "alibi": "menyiapkan dokumen.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "ayu",
+        "name": "Ayu",
+        "role": "keponakan",
+        "avatar": "💁‍♀️",
+        "color": "#f29ac4",
+        "clue": [
+          {
+            "t": "beside",
+            "v": "wastafel"
+          }
+        ],
+        "story": {
+          "rahasia": "keponakan yang berutang.",
+          "alibi": "menyeduh teh.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "sinta",
+        "name": "Sinta",
+        "role": "asisten",
+        "avatar": "👩",
+        "color": "#f29ac4",
+        "clue": [
+          {
+            "t": "beside",
+            "v": "sepeda"
+          }
+        ],
+        "story": {
+          "rahasia": "asisten yang dijanjikan bagian.",
+          "alibi": "merapikan kamar tamu.",
+          "pengecoh": "membawa map tebal."
+        }
+      },
+      {
+        "id": "kevin",
+        "name": "Kevin",
+        "role": "suami keponakan",
+        "avatar": "🧑‍🎤",
+        "color": "#c69be8",
+        "clue": [
+          {
+            "t": "room",
+            "v": "R"
+          },
+          {
+            "t": "col",
+            "v": 4
+          }
+        ],
+        "story": {
+          "rahasia": "suami keponakan yang mengincar villa.",
+          "alibi": "bermain kartu.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "dewi",
+        "name": "dr. Dewi",
+        "role": "perawat pribadi",
+        "avatar": "👩‍⚕️",
+        "color": "#8fd1c8",
+        "clue": [
+          {
+            "t": "beside",
+            "v": "tanaman"
+          }
+        ],
+        "story": {
+          "rahasia": "perawat pribadi yang tahu kondisi Melati.",
+          "alibi": "menyiapkan obat.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "darmo",
+        "name": "Ki Darmo",
+        "role": "sopir",
+        "avatar": "🧓",
+        "color": "#e5c55a",
+        "clue": [
+          {
+            "t": "beside",
+            "v": "kardus"
+          }
+        ],
+        "story": {
+          "rahasia": "sopir yang pernah membawa pembeli diam-diam.",
+          "alibi": "mencuci mobil.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "melati",
+        "name": "Bu Melati",
+        "role": "pemilik villa",
+        "avatar": "👩‍🦳",
+        "color": "#bdb5ab",
+        "victim": true
+      }
+    ]
+  },
+  {
+    "id": "warung-kelontong-rebutan",
+    "title": "Warung Kelontong Rebutan",
+    "location": "Warung Kelontong Tua",
+    "intro": "Pak Darto ditemukan tak bernyawa di tengah ramainya warung, dan tujuh orang lain masih berada di sana.",
+    "story": {
+      "nada": "komedi",
+      "latar": "warung kelontong tua yang diperebutkan dua keluarga.",
+      "motif": "sertifikat warung dan tabungan di toples."
+    },
+    "rooms": [
+      "WWWWBBBB",
+      "WWWWBBBB",
+      "WWWWGGGG",
+      "WWWWGGGG",
+      "WWWWGGGG",
+      "PPPPGGGG",
+      "PPPPPPPP",
+      "PPPPPPPP"
+    ],
+    "roomInfo": {
+      "W": {
+        "name": "Warung",
+        "floor": "darkwood"
+      },
+      "B": {
+        "name": "Bangku Depan",
+        "floor": "deck"
+      },
+      "G": {
+        "name": "Gudang",
+        "floor": "concrete"
+      },
+      "P": {
+        "name": "Pekarangan",
+        "floor": "grass"
+      }
+    },
+    "kinds": {
+      "etalase": {
+        "name": "etalase kue",
+        "emoji": "🍰"
+      },
+      "kasir": {
+        "name": "mesin kasir",
+        "emoji": "🧾"
+      },
+      "tong": {
+        "name": "toples tabungan",
+        "emoji": "🫙"
+      },
+      "meja": {
+        "name": "meja",
+        "emoji": "🪵"
+      },
+      "kursi": {
+        "name": "kursi",
+        "emoji": "🪑",
+        "walkable": true,
+        "seat": true
+      },
+      "gentong": {
+        "name": "gentong air",
+        "emoji": "🏺"
+      },
+      "bangku": {
+        "name": "bangku",
+        "emoji": "🪑",
+        "walkable": true,
+        "seat": true
+      },
+      "pot": {
+        "name": "pot bunga",
+        "emoji": "🪴"
+      },
+      "payung": {
+        "name": "meja payung",
+        "emoji": "⛱️"
+      },
+      "rak": {
+        "name": "rak buku",
+        "emoji": "📚"
+      },
+      "kardus": {
+        "name": "tumpukan kardus",
+        "emoji": "📦"
+      },
+      "peti": {
+        "name": "peti",
+        "emoji": "🧰"
+      },
+      "arsip": {
+        "name": "lemari arsip",
+        "emoji": "🗃️"
+      },
+      "lemari": {
+        "name": "lemari",
+        "emoji": "🗄️"
+      },
+      "kandang": {
+        "name": "kandang kucing",
+        "emoji": "🐈"
+      },
+      "pohon": {
+        "name": "pohon",
+        "emoji": "🌳"
+      },
+      "sumur": {
+        "name": "sumur",
+        "emoji": "🪣"
+      },
+      "sepeda": {
+        "name": "sepeda",
+        "emoji": "🚲"
+      },
+      "kayu": {
+        "name": "tumpukan kayu",
+        "emoji": "🪵"
+      },
+      "tanaman": {
+        "name": "tanaman",
+        "emoji": "🪴"
+      }
+    },
+    "objects": [
+      {
+        "kind": "etalase",
+        "r": 0,
+        "c": 0,
+        "w": 2
+      },
+      {
+        "kind": "kasir",
+        "r": 0,
+        "c": 3
+      },
+      {
+        "kind": "tong",
+        "r": 1,
+        "c": 0
+      },
+      {
+        "kind": "meja",
+        "r": 2,
+        "c": 1,
+        "w": 2
+      },
+      {
+        "kind": "kursi",
+        "r": 3,
+        "c": 3
+      },
+      {
+        "kind": "gentong",
+        "r": 1,
+        "c": 3
+      },
+      {
+        "kind": "bangku",
+        "r": 0,
+        "c": 5,
+        "w": 2
+      },
+      {
+        "kind": "pot",
+        "r": 1,
+        "c": 7
+      },
+      {
+        "kind": "payung",
+        "r": 1,
+        "c": 4
+      },
+      {
+        "kind": "rak",
+        "r": 2,
+        "c": 4,
+        "w": 2
+      },
+      {
+        "kind": "kardus",
+        "r": 2,
+        "c": 7
+      },
+      {
+        "kind": "peti",
+        "r": 3,
+        "c": 6,
+        "w": 2
+      },
+      {
+        "kind": "arsip",
+        "r": 4,
+        "c": 5
+      },
+      {
+        "kind": "lemari",
+        "r": 4,
+        "c": 7
+      },
+      {
+        "kind": "kandang",
+        "r": 5,
+        "c": 4
+      },
+      {
+        "kind": "pohon",
+        "r": 5,
+        "c": 0
+      },
+      {
+        "kind": "sumur",
+        "r": 6,
+        "c": 0
+      },
+      {
+        "kind": "sepeda",
+        "r": 5,
+        "c": 2
+      },
+      {
+        "kind": "kayu",
+        "r": 6,
+        "c": 3
+      },
+      {
+        "kind": "tanaman",
+        "r": 7,
+        "c": 6
+      },
+      {
+        "kind": "kardus",
+        "r": 7,
+        "c": 1
+      }
+    ],
+    "people": [
+      {
+        "id": "tini",
+        "name": "Bu Tini",
+        "role": "istri kakak",
+        "avatar": "👩‍🍳",
+        "color": "#f2a96b",
+        "clue": [
+          {
+            "t": "beside",
+            "v": "tong"
+          }
+        ],
+        "story": {
+          "rahasia": "istri kakak yang sering mengutang.",
+          "alibi": "menata dagangan.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "sumi",
+        "name": "Mbok Sumi",
+        "role": "tetangga",
+        "avatar": "👩‍🍳",
+        "color": "#f39b7f",
+        "clue": [
+          {
+            "t": "beside",
+            "v": "pot"
+          }
+        ],
+        "story": {
+          "rahasia": "tetangga yang menggeser patok.",
+          "alibi": "membeli gula.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "joni",
+        "name": "Joni",
+        "role": "pemasok",
+        "avatar": "🧑‍🔧",
+        "color": "#e5c55a",
+        "clue": [
+          {
+            "t": "beside",
+            "v": "peti"
+          }
+        ],
+        "story": {
+          "rahasia": "pemasok yang mengurangi timbangan.",
+          "alibi": "menurunkan karung.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "ujang",
+        "name": "Ujang",
+        "role": "pembeli tetap",
+        "avatar": "🧑‍🔧",
+        "color": "#8fd18b",
+        "clue": [
+          {
+            "t": "room",
+            "v": "W"
+          },
+          {
+            "t": "col",
+            "v": 2
+          }
+        ],
+        "story": {
+          "rahasia": "pembeli tetap yang berutang rokok.",
+          "alibi": "duduk di bangku depan.",
+          "pengecoh": "membawa buku catatan utang."
+        }
+      },
+      {
+        "id": "rina",
+        "name": "Rina",
+        "role": "wartawan",
+        "avatar": "👩‍💻",
+        "color": "#c69be8",
+        "clue": [
+          {
+            "t": "beside",
+            "v": "kandang"
+          }
+        ],
+        "story": {
+          "rahasia": "wartawan gosip yang mengincar kabar.",
+          "alibi": "mengobrol dengan pembeli.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "bima",
+        "name": "Bima",
+        "role": "anak pemilik",
+        "avatar": "🧑‍🎨",
+        "color": "#8fd18b",
+        "clue": [
+          {
+            "t": "beside",
+            "v": "sumur"
+          }
+        ],
+        "story": {
+          "rahasia": "anak pemilik yang ingin menjual warung.",
+          "alibi": "menjaga kasir.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "sekar",
+        "name": "Sekar",
+        "role": "pengunjung",
+        "avatar": "👩‍🎨",
+        "color": "#f29ac4",
+        "clue": [
+          {
+            "t": "beside",
+            "v": "gentong"
+          }
+        ],
+        "story": {
+          "rahasia": "menyembunyikan kucing warung.",
+          "alibi": "menyapu lantai.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "darto",
+        "name": "Pak Darto",
+        "role": "pemilik warung",
+        "avatar": "👨‍🌾",
+        "color": "#8fc97a",
+        "victim": true
+      }
+    ]
+  },
+  {
+    "id": "foto-pernikahan-terlarang",
+    "title": "Foto Pernikahan yang Tak Boleh Terbit",
+    "location": "Studio Foto Kecil",
+    "intro": "Bu Nadia ditemukan tak bernyawa saat studio sibuk menjelang akhir pekan, dan tujuh orang lain masih berada di sana.",
+    "story": {
+      "nada": "campuran",
+      "latar": "studio foto kecil yang sibuk menjelang akhir pekan.",
+      "motif": "foto yang menunjukkan siapa hadir di tempat yang tidak seharusnya."
+    },
+    "rooms": [
+      "LLLLSSSS",
+      "LLLLSSSS",
+      "LLRRSSSS",
+      "LLRRSSSS",
+      "LLRRCCCC",
+      "LLRRCCCC",
+      "LLCCCCCC",
+      "LLCCCCCC"
+    ],
+    "roomInfo": {
+      "L": {
+        "name": "Lobi Studio",
+        "floor": "parquet"
+      },
+      "S": {
+        "name": "Ruang Studio",
+        "floor": "marble"
+      },
+      "R": {
+        "name": "Ruang Rias",
+        "floor": "lilac"
+      },
+      "C": {
+        "name": "Ruang Cetak",
+        "floor": "darktile"
+      }
+    },
+    "kinds": {
+      "lampu": {
+        "name": "lampu hias",
+        "emoji": "💡"
+      },
+      "resepsionis": {
+        "name": "meja resepsionis",
+        "emoji": "🛎️"
+      },
+      "kursi": {
+        "name": "kursi",
+        "emoji": "🪑",
+        "walkable": true,
+        "seat": true
+      },
+      "sofa": {
+        "name": "sofa",
+        "emoji": "🛋️"
+      },
+      "tanaman": {
+        "name": "tanaman",
+        "emoji": "🪴"
+      },
+      "lukisan": {
+        "name": "lukisan",
+        "emoji": "🖼️"
+      },
+      "karpet": {
+        "name": "karpet",
+        "walkable": true,
+        "rug": true
+      },
+      "teropong": {
+        "name": "kamera tripod",
+        "emoji": "📷"
+      },
+      "patung": {
+        "name": "patung",
+        "emoji": "🗿"
+      },
+      "lemari": {
+        "name": "lemari",
+        "emoji": "🗄️"
+      },
+      "meja": {
+        "name": "meja",
+        "emoji": "🪵"
+      },
+      "mesin": {
+        "name": "mesin cetak",
+        "emoji": "🖨️"
+      },
+      "arsip": {
+        "name": "lemari arsip",
+        "emoji": "🗃️"
+      },
+      "jam": {
+        "name": "jam dinding",
+        "emoji": "🕰️"
+      },
+      "rak": {
+        "name": "rak buku",
+        "emoji": "📚"
+      },
+      "kardus": {
+        "name": "tumpukan kardus",
+        "emoji": "📦"
+      },
+      "pot": {
+        "name": "pot bunga",
+        "emoji": "🪴"
+      }
+    },
+    "objects": [
+      {
+        "kind": "lampu",
+        "r": 0,
+        "c": 0
+      },
+      {
+        "kind": "resepsionis",
+        "r": 0,
+        "c": 2,
+        "w": 2
+      },
+      {
+        "kind": "kursi",
+        "r": 1,
+        "c": 0
+      },
+      {
+        "kind": "sofa",
+        "r": 1,
+        "c": 2,
+        "w": 2
+      },
+      {
+        "kind": "tanaman",
+        "r": 1,
+        "c": 1
+      },
+      {
+        "kind": "lukisan",
+        "r": 0,
+        "c": 4,
+        "w": 2
+      },
+      {
+        "kind": "karpet",
+        "r": 1,
+        "c": 4,
+        "w": 2
+      },
+      {
+        "kind": "lampu",
+        "r": 1,
+        "c": 7
+      },
+      {
+        "kind": "teropong",
+        "r": 2,
+        "c": 6
+      },
+      {
+        "kind": "patung",
+        "r": 2,
+        "c": 4
+      },
+      {
+        "kind": "kursi",
+        "r": 3,
+        "c": 5
+      },
+      {
+        "kind": "lemari",
+        "r": 2,
+        "c": 2
+      },
+      {
+        "kind": "kursi",
+        "r": 3,
+        "c": 3
+      },
+      {
+        "kind": "meja",
+        "r": 4,
+        "c": 2,
+        "w": 2
+      },
+      {
+        "kind": "lemari",
+        "r": 5,
+        "c": 2
+      },
+      {
+        "kind": "mesin",
+        "r": 4,
+        "c": 4,
+        "w": 2
+      },
+      {
+        "kind": "arsip",
+        "r": 4,
+        "c": 7
+      },
+      {
+        "kind": "arsip",
+        "r": 5,
+        "c": 6
+      },
+      {
+        "kind": "jam",
+        "r": 5,
+        "c": 4
+      },
+      {
+        "kind": "rak",
+        "r": 6,
+        "c": 3
+      },
+      {
+        "kind": "kardus",
+        "r": 6,
+        "c": 6
+      },
+      {
+        "kind": "kursi",
+        "r": 7,
+        "c": 4
+      },
+      {
+        "kind": "pot",
+        "r": 7,
+        "c": 2
+      }
+    ],
+    "people": [
+      {
+        "id": "kevin",
+        "name": "Kevin",
+        "role": "pengantin pria",
+        "avatar": "🧑‍🎤",
+        "color": "#c69be8",
+        "clue": [
+          {
+            "t": "col",
+            "v": 5
+          }
+        ],
+        "story": {
+          "rahasia": "pengantin pria yang tidak ingin foto itu terbit.",
+          "alibi": "menunggu giliran difoto.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "sri",
+        "name": "Mbak Sri",
+        "role": "penata rias",
+        "avatar": "👩‍🎤",
+        "color": "#f29ac4",
+        "clue": [
+          {
+            "t": "beside",
+            "v": "tanaman"
+          }
+        ],
+        "story": {
+          "rahasia": "penata rias yang tahu isi foto.",
+          "alibi": "merias pelanggan.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "galih",
+        "name": "Galih",
+        "role": "asisten fotografer",
+        "avatar": "🧑",
+        "color": "#8fd18b",
+        "clue": [
+          {
+            "t": "beside",
+            "v": "kardus"
+          }
+        ],
+        "story": {
+          "rahasia": "asisten yang menyalin berkas foto.",
+          "alibi": "mengatur lampu.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "herman",
+        "name": "Om Herman",
+        "role": "klien",
+        "avatar": "🤵",
+        "color": "#9aa5b5",
+        "clue": [
+          {
+            "t": "row",
+            "v": 5
+          }
+        ],
+        "story": {
+          "rahasia": "klien yang menolak membayar.",
+          "alibi": "memilih bingkai.",
+          "pengecoh": "membawa dompet tebal."
+        }
+      },
+      {
+        "id": "melati",
+        "name": "Bu Melati",
+        "role": "saksi",
+        "avatar": "👩‍🦳",
+        "color": "#bdb5ab",
+        "clue": [
+          {
+            "t": "room",
+            "v": "C"
+          },
+          {
+            "t": "row",
+            "v": 4
+          }
+        ],
+        "story": {
+          "rahasia": "saksi yang terlihat di foto.",
+          "alibi": "mengecek gaun.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "tuantan",
+        "name": "Tuan Tan",
+        "role": "kakek pengantin",
+        "avatar": "👴",
+        "color": "#e5c55a",
+        "clue": [
+          {
+            "t": "room",
+            "v": "L"
+          }
+        ],
+        "story": {
+          "rahasia": "kakek pengantin yang menyimpan foto lama.",
+          "alibi": "duduk menunggu.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "ratih",
+        "name": "Ratih",
+        "role": "pengantin wanita",
+        "avatar": "👩",
+        "color": "#c69be8",
+        "clue": [
+          {
+            "t": "beside",
+            "v": "meja"
+          }
+        ],
+        "story": {
+          "rahasia": "pengantin wanita yang ragu.",
+          "alibi": "mencoba kerudung.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "nadia",
+        "name": "Nadia",
+        "role": "fotografer",
+        "avatar": "👩‍💻",
+        "color": "#c69be8",
+        "victim": true
+      }
+    ]
   }
 ];
