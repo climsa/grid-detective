@@ -30,8 +30,8 @@ Semua script dimuat sebagai script biasa (bukan ES module), jadi tetap jalan dar
 
 Buka game → **Menu Utama**: Mulai, Pilih Kasus, Mode Khusus, Pengaturan, Cara Main, Tentang.
 
-- **Mulai** membuka kasus 1–15 pertama yang belum selesai; jika semua selesai, membuka Pilih Kasus. Mode Khusus tidak ikut dihitung.
-- **Pilih Kasus** menampilkan kasus 1–15 dengan status Terkunci / Terbuka / Selesai (`CASE_COUNT` di `src/js/ui.js`).
+- **Mulai** membuka kasus 1–23 pertama yang belum selesai; jika semua selesai, membuka Pilih Kasus. Mode Khusus tidak ikut dihitung.
+- **Pilih Kasus** menampilkan kasus 1–23 dengan status Terkunci / Terbuka / Selesai (`CASE_COUNT` di `src/js/ui.js`).
 - **Mode Khusus** adalah entri terpisah dan hanya memuat kasus 9×9 dari data (saat ini joglo-lurah); kasus 9×9 tidak ada di Pilih Kasus. Statusnya selalu Tersedia (belum ada syarat pembukaan).
 - Semua layar memakai tampilan portrait, di desktop maupun HP. Latar menu memakai `src/assets/img/menu/menu_bg_portrait.png` (cover) untuk semua lebar layar; konten menu dibatasi 480px dan di tengah.
 - `src/assets/img/menu/menu_bg_landscape.png` **tidak dipakai** oleh CSS maupun HTML. File tetap disimpan, tidak dihapus.
@@ -58,6 +58,10 @@ Layar dikendalikan di `src/js/ui.js` (`go()`); tiap layar adalah `<section class
 | 13 | Rahasia di Balik Layar Bioskop Tua | 8×8 | 8 |
 | 14 | Lomba Masak yang Kacau | 8×8 | 8 |
 | 15 | Malam Terakhir Festival Wayang Kota | 8×8 | 8 |
+| 16 | Lampu Padam di Perpustakaan Desa | 7×7 | 7 |
+| 17 | Opor Hilang di Hajatan Sunatan | 7×7 | 7 |
+| 18 | Pelatih Terakhir di Turnamen Futsal | 7×7 | 7 |
+| 19 | Kapal Terakhir Sebelum Badai | 7×7 | 7 |
 | Khusus | Malam Pusaka di Rumah Joglo | 9×9 | 9 |
 
 **Mode acak** (default aktif): posisi orang dan clue disusun ulang setiap main, jawaban tetap tunggal (dicek solver). Tiap susunan punya **kode 6 angka** yang bisa dibagikan agar teman memainkan susunan yang sama. Mode ini bisa dimatikan di Pengaturan untuk memakai clue tetap.
