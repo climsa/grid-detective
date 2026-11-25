@@ -1361,5 +1361,1295 @@ const LEVELS = [
         }
       }
     ]
+  },
+  {
+    "id": "piala-hilang-hari-lomba",
+    "title": "Piala Hilang di Hari Lomba Sekolah",
+    "location": "Sekolah Dasar, Hari Lomba Antarkelas",
+    "intro": "Rina ditemukan tak bernyawa di tengah lomba antarkelas, dan enam orang lain masih berada di sekitarnya.",
+    "story": {
+      "nada": "campuran",
+      "latar": "sekolah pada hari lomba antarkelas, halaman ramai.",
+      "motif": "piala bergilir dan nilai rapor yang dipertaruhkan."
+    },
+    "rooms": [
+      "HHHGGGG",
+      "HHHGGGG",
+      "HHHGGGG",
+      "HHHPPPP",
+      "HHHPPPP",
+      "HHHPPPP",
+      "HHHPPPP"
+    ],
+    "roomInfo": {
+      "H": {
+        "name": "Halaman Sekolah",
+        "floor": "grass"
+      },
+      "G": {
+        "name": "Ruang Guru",
+        "floor": "tiles"
+      },
+      "P": {
+        "name": "Ruang Piala",
+        "floor": "marble"
+      }
+    },
+    "kinds": {
+      "pohon": {
+        "name": "pohon besar",
+        "emoji": "🌳"
+      },
+      "bangku": {
+        "name": "bangku",
+        "emoji": "🪑",
+        "walkable": true,
+        "seat": true
+      },
+      "tikar": {
+        "name": "tikar lomba",
+        "walkable": true,
+        "rug": true
+      },
+      "meja": {
+        "name": "meja guru",
+        "emoji": "✒️"
+      },
+      "lemari": {
+        "name": "lemari alat olahraga",
+        "emoji": "🗄️"
+      },
+      "rak": {
+        "name": "rak bola",
+        "emoji": "📚"
+      },
+      "kursi": {
+        "name": "kursi",
+        "emoji": "🪑",
+        "walkable": true,
+        "seat": true
+      },
+      "etalase": {
+        "name": "etalase piala",
+        "emoji": "🏆"
+      }
+    },
+    "objects": [
+      {
+        "kind": "pohon",
+        "r": 0,
+        "c": 1
+      },
+      {
+        "kind": "pohon",
+        "r": 4,
+        "c": 0
+      },
+      {
+        "kind": "bangku",
+        "r": 2,
+        "c": 2
+      },
+      {
+        "kind": "bangku",
+        "r": 6,
+        "c": 3
+      },
+      {
+        "kind": "tikar",
+        "r": 3,
+        "c": 1,
+        "w": 2,
+        "h": 2
+      },
+      {
+        "kind": "lemari",
+        "r": 0,
+        "c": 6,
+        "h": 2
+      },
+      {
+        "kind": "meja",
+        "r": 2,
+        "c": 5
+      },
+      {
+        "kind": "rak",
+        "r": 3,
+        "c": 4
+      },
+      {
+        "kind": "kursi",
+        "r": 0,
+        "c": 5
+      },
+      {
+        "kind": "etalase",
+        "r": 4,
+        "c": 5
+      },
+      {
+        "kind": "kursi",
+        "r": 6,
+        "c": 6
+      }
+    ],
+    "people": [
+      {
+        "id": "ujang",
+        "name": "Ujang",
+        "role": "penjaga sekolah",
+        "avatar": "🧑‍🔧",
+        "color": "#8fd18b",
+        "clue": [
+          {
+            "t": "row",
+            "v": 1
+          }
+        ],
+        "story": {
+          "rahasia": "penjaga sekolah yang menyimpan kunci piala.",
+          "alibi": "menyapu halaman.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "ayu",
+        "name": "Ayu",
+        "role": "guru",
+        "avatar": "💁‍♀️",
+        "color": "#f29ac4",
+        "clue": [
+          {
+            "t": "on",
+            "v": "kursi"
+          }
+        ],
+        "story": {
+          "rahasia": "guru yang menaikkan nilai muridnya.",
+          "alibi": "membagikan nomor lomba.",
+          "pengecoh": "tersenyum terlalu lebar."
+        }
+      },
+      {
+        "id": "kevin",
+        "name": "Kevin",
+        "role": "murid senior",
+        "avatar": "🧑‍🎤",
+        "color": "#c69be8",
+        "clue": [
+          {
+            "t": "on",
+            "v": "bangku"
+          }
+        ],
+        "story": {
+          "rahasia": "murid senior yang ingin menang.",
+          "alibi": "menjadi pemandu sorak.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "sumi",
+        "name": "Mbok Sumi",
+        "role": "orang tua murid",
+        "avatar": "👩‍🍳",
+        "color": "#f39b7f",
+        "clue": [
+          {
+            "t": "row",
+            "v": 4
+          }
+        ],
+        "story": {
+          "rahasia": "orang tua murid yang menekan juri.",
+          "alibi": "duduk di tribun.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "hendra",
+        "name": "Pak Hendra",
+        "role": "kepala sekolah",
+        "avatar": "👨‍💼",
+        "color": "#7fa7e6",
+        "clue": [
+          {
+            "t": "col",
+            "v": 1
+          }
+        ],
+        "story": {
+          "rahasia": "kepala sekolah yang menyembunyikan anggaran.",
+          "alibi": "memberi sambutan.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "joko",
+        "name": "Pak Joko",
+        "role": "petugas keamanan",
+        "avatar": "👨‍🦲",
+        "color": "#e5c55a",
+        "clue": [
+          {
+            "t": "room",
+            "v": "P"
+          },
+          {
+            "t": "col",
+            "v": 4
+          }
+        ],
+        "story": {
+          "rahasia": "petugas keamanan yang tertidur saat jaga.",
+          "alibi": "berkeliling halaman.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "rina",
+        "name": "Rina",
+        "role": "guru olahraga",
+        "avatar": "👩‍💻",
+        "color": "#c69be8",
+        "victim": true
+      }
+    ]
+  },
+  {
+    "id": "kondangan-salah-alamat",
+    "title": "Kondangan Salah Alamat",
+    "location": "Gedung Pernikahan, Dua Resepsi",
+    "intro": "Ratih ditemukan tak bernyawa di tengah dua resepsi yang kacau, dan tujuh orang lain masih berada di sana.",
+    "story": {
+      "nada": "komedi",
+      "latar": "gedung dengan dua resepsi pada jam yang sama dan tamu bingung.",
+      "motif": "amplop sumbangan yang tertukar."
+    },
+    "rooms": [
+      "LLLLRRRR",
+      "LLLLRRRR",
+      "LLLLRRRR",
+      "LLLLRRRR",
+      "DDDDKKKK",
+      "DDDDKKKK",
+      "DDDDKKKK",
+      "DDDDKKKK"
+    ],
+    "roomInfo": {
+      "L": {
+        "name": "Lobi",
+        "floor": "marble"
+      },
+      "R": {
+        "name": "Resepsi Melati",
+        "floor": "lilac"
+      },
+      "K": {
+        "name": "Resepsi Mawar",
+        "floor": "lightwood"
+      },
+      "D": {
+        "name": "Area Parkir",
+        "floor": "concrete"
+      }
+    },
+    "kinds": {
+      "kursi": {
+        "name": "kursi",
+        "emoji": "🪑",
+        "walkable": true,
+        "seat": true
+      },
+      "bangku": {
+        "name": "bangku",
+        "emoji": "🪑",
+        "walkable": true,
+        "seat": true
+      },
+      "karpet": {
+        "name": "karpet",
+        "walkable": true,
+        "rug": true
+      },
+      "tikar": {
+        "name": "tikar",
+        "walkable": true,
+        "rug": true
+      },
+      "tanaman": {
+        "name": "tanaman",
+        "emoji": "🪴"
+      },
+      "mejamakan": {
+        "name": "meja makan",
+        "emoji": "🍽️"
+      },
+      "kue": {
+        "name": "meja prasmanan",
+        "emoji": "🎂"
+      },
+      "resepsionis": {
+        "name": "meja tamu",
+        "emoji": "🛎️"
+      },
+      "peti": {
+        "name": "kotak amplop",
+        "emoji": "📦"
+      },
+      "piano": {
+        "name": "piano",
+        "emoji": "🎹"
+      },
+      "sepeda": {
+        "name": "sepeda",
+        "emoji": "🚲"
+      },
+      "payung": {
+        "name": "meja payung",
+        "emoji": "⛱️"
+      },
+      "kardus": {
+        "name": "tumpukan kardus",
+        "emoji": "📦"
+      }
+    },
+    "objects": [
+      {
+        "kind": "resepsionis",
+        "r": 0,
+        "c": 1,
+        "w": 2
+      },
+      {
+        "kind": "tanaman",
+        "r": 2,
+        "c": 0
+      },
+      {
+        "kind": "kursi",
+        "r": 1,
+        "c": 3
+      },
+      {
+        "kind": "bangku",
+        "r": 3,
+        "c": 3
+      },
+      {
+        "kind": "kue",
+        "r": 0,
+        "c": 6,
+        "w": 2
+      },
+      {
+        "kind": "karpet",
+        "r": 1,
+        "c": 6,
+        "w": 2
+      },
+      {
+        "kind": "mejamakan",
+        "r": 2,
+        "c": 4,
+        "w": 2
+      },
+      {
+        "kind": "peti",
+        "r": 3,
+        "c": 7
+      },
+      {
+        "kind": "piano",
+        "r": 4,
+        "c": 6,
+        "w": 2
+      },
+      {
+        "kind": "kursi",
+        "r": 5,
+        "c": 4
+      },
+      {
+        "kind": "tikar",
+        "r": 6,
+        "c": 4,
+        "w": 2,
+        "h": 2
+      },
+      {
+        "kind": "sepeda",
+        "r": 5,
+        "c": 0,
+        "h": 2
+      },
+      {
+        "kind": "payung",
+        "r": 4,
+        "c": 2
+      },
+      {
+        "kind": "kardus",
+        "r": 7,
+        "c": 1
+      },
+      {
+        "kind": "tikar",
+        "r": 6,
+        "c": 2,
+        "h": 2
+      }
+    ],
+    "people": [
+      {
+        "id": "sinta",
+        "name": "Sinta",
+        "role": "pengantar tamu",
+        "avatar": "👩",
+        "color": "#f29ac4",
+        "clue": [
+          {
+            "t": "beside",
+            "v": "sepeda"
+          }
+        ],
+        "story": {
+          "rahasia": "pengantar tamu yang salah mengarahkan.",
+          "alibi": "mendata buku tamu.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "arif",
+        "name": "Arif",
+        "role": "tamu tidak diundang",
+        "avatar": "🧑‍💼",
+        "color": "#7fa7e6",
+        "clue": [
+          {
+            "t": "on",
+            "v": "bangku"
+          }
+        ],
+        "story": {
+          "rahasia": "tamu yang tidak diundang.",
+          "alibi": "mengantre makanan.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "parjo",
+        "name": "Pak Parjo",
+        "role": "penata parkir",
+        "avatar": "👨‍🌾",
+        "color": "#b7a27a",
+        "clue": [
+          {
+            "t": "row",
+            "v": 1
+          }
+        ],
+        "story": {
+          "rahasia": "menukar kotak amplop.",
+          "alibi": "menata parkir.",
+          "pengecoh": "ada amplop di sakunya."
+        }
+      },
+      {
+        "id": "laras",
+        "name": "Laras",
+        "role": "penyanyi",
+        "avatar": "👩‍🍳",
+        "color": "#f2a96b",
+        "clue": [
+          {
+            "t": "beside",
+            "v": "piano"
+          }
+        ],
+        "story": {
+          "rahasia": "penyanyi yang salah menyanyikan lagu.",
+          "alibi": "bernyanyi di panggung.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "galih",
+        "name": "Galih",
+        "role": "juru foto",
+        "avatar": "🧑",
+        "color": "#8fd18b",
+        "clue": [
+          {
+            "t": "col",
+            "v": 6
+          }
+        ],
+        "story": {
+          "rahasia": "memotret tamu yang tidak seharusnya hadir.",
+          "alibi": "memotret pelaminan.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "nadia",
+        "name": "Nadia",
+        "role": "pembawa acara",
+        "avatar": "👩‍💻",
+        "color": "#c69be8",
+        "clue": [
+          {
+            "t": "col",
+            "v": 2
+          }
+        ],
+        "story": {
+          "rahasia": "pembawa acara yang salah menyebut nama.",
+          "alibi": "memandu acara.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "tuantan",
+        "name": "Tuan Tan",
+        "role": "sepupu jauh",
+        "avatar": "👴",
+        "color": "#e5c55a",
+        "clue": [
+          {
+            "t": "room",
+            "v": "D"
+          },
+          {
+            "t": "row",
+            "v": 5
+          }
+        ],
+        "story": {
+          "rahasia": "sepupu jauh yang menagih utang.",
+          "alibi": "bersalaman dengan tamu.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "ratih",
+        "name": "Ratih",
+        "role": "tuan rumah resepsi",
+        "avatar": "👩",
+        "color": "#c69be8",
+        "victim": true
+      }
+    ]
+  },
+  {
+    "id": "rumah-sakit-tua",
+    "title": "Rumah Sakit Tua Sebelum Dirobohkan",
+    "location": "Rumah Sakit Tua, Menunggu Dirobohkan",
+    "intro": "Pak Hendra ditemukan tak bernyawa di antara reruntuhan, dan tujuh orang lain masih berada di sana.",
+    "story": {
+      "nada": "dark",
+      "latar": "rumah sakit tua yang tinggal menunggu dirobohkan, lorongnya gelap.",
+      "motif": "berkas pasien lama yang membuka aib."
+    },
+    "rooms": [
+      "RRRRCCCC",
+      "RRRRCCCC",
+      "RRRRCCCC",
+      "RRRRCCCC",
+      "DDDDDDDD",
+      "TTTTUUUU",
+      "TTTTUUUU",
+      "TTTTUUUU"
+    ],
+    "roomInfo": {
+      "R": {
+        "name": "Ruang Periksa",
+        "floor": "tiles"
+      },
+      "C": {
+        "name": "Kamar Rawat",
+        "floor": "darkwood"
+      },
+      "D": {
+        "name": "Lorong",
+        "floor": "darktile"
+      },
+      "T": {
+        "name": "Ruang Tunggu",
+        "floor": "lightwood"
+      },
+      "U": {
+        "name": "Gudang Berkas",
+        "floor": "concrete"
+      }
+    },
+    "kinds": {
+      "kasur": {
+        "name": "ranjang pasien",
+        "emoji": "🛏️"
+      },
+      "arsip": {
+        "name": "lemari arsip",
+        "emoji": "🗄️"
+      },
+      "lemari": {
+        "name": "lemari obat",
+        "emoji": "🗄️"
+      },
+      "kursi": {
+        "name": "kursi",
+        "emoji": "🪑",
+        "walkable": true,
+        "seat": true
+      },
+      "bangku": {
+        "name": "bangku",
+        "emoji": "🪑",
+        "walkable": true,
+        "seat": true
+      },
+      "perkakas": {
+        "name": "kotak perkakas",
+        "emoji": "🧰"
+      },
+      "tong": {
+        "name": "drum bekas",
+        "emoji": "🛢️"
+      },
+      "kardus": {
+        "name": "tumpukan kardus",
+        "emoji": "📦"
+      },
+      "peti": {
+        "name": "peti kayu",
+        "emoji": "📦"
+      },
+      "tanaman": {
+        "name": "tanaman",
+        "emoji": "🪴"
+      },
+      "lampu": {
+        "name": "lampu gantung",
+        "emoji": "💡"
+      },
+      "tikar": {
+        "name": "tikar",
+        "walkable": true,
+        "rug": true
+      }
+    },
+    "objects": [
+      {
+        "kind": "kasur",
+        "r": 0,
+        "c": 0,
+        "h": 2
+      },
+      {
+        "kind": "arsip",
+        "r": 0,
+        "c": 2,
+        "w": 2
+      },
+      {
+        "kind": "kursi",
+        "r": 2,
+        "c": 2
+      },
+      {
+        "kind": "perkakas",
+        "r": 3,
+        "c": 3
+      },
+      {
+        "kind": "kasur",
+        "r": 0,
+        "c": 7
+      },
+      {
+        "kind": "lemari",
+        "r": 0,
+        "c": 5
+      },
+      {
+        "kind": "tong",
+        "r": 1,
+        "c": 6
+      },
+      {
+        "kind": "kardus",
+        "r": 2,
+        "c": 4,
+        "w": 2
+      },
+      {
+        "kind": "bangku",
+        "r": 3,
+        "c": 6
+      },
+      {
+        "kind": "tanaman",
+        "r": 4,
+        "c": 0
+      },
+      {
+        "kind": "tikar",
+        "r": 4,
+        "c": 3
+      },
+      {
+        "kind": "lampu",
+        "r": 4,
+        "c": 6
+      },
+      {
+        "kind": "kursi",
+        "r": 5,
+        "c": 3
+      },
+      {
+        "kind": "bangku",
+        "r": 6,
+        "c": 0
+      },
+      {
+        "kind": "lemari",
+        "r": 7,
+        "c": 1
+      },
+      {
+        "kind": "lemari",
+        "r": 5,
+        "c": 4
+      },
+      {
+        "kind": "peti",
+        "r": 5,
+        "c": 6,
+        "h": 2
+      },
+      {
+        "kind": "kardus",
+        "r": 6,
+        "c": 4
+      },
+      {
+        "kind": "arsip",
+        "r": 7,
+        "c": 4,
+        "w": 2
+      }
+    ],
+    "people": [
+      {
+        "id": "dewi",
+        "name": "dr. Dewi",
+        "role": "mantan perawat",
+        "avatar": "👩‍⚕️",
+        "color": "#8fd1c8",
+        "clue": [
+          {
+            "t": "beside",
+            "v": "tong"
+          }
+        ],
+        "story": {
+          "rahasia": "mantan perawat yang menyimpan berkas.",
+          "alibi": "merapikan kotak obat.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "ayu",
+        "name": "Ayu",
+        "role": "keluarga pasien",
+        "avatar": "💁‍♀️",
+        "color": "#f29ac4",
+        "clue": [
+          {
+            "t": "room",
+            "v": "T"
+          },
+          {
+            "t": "row",
+            "v": 5
+          }
+        ],
+        "story": {
+          "rahasia": "keluarga pasien yang mencari kebenaran.",
+          "alibi": "menunggu di ruang tunggu.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "joni",
+        "name": "Joni",
+        "role": "teknisi",
+        "avatar": "🧑‍🔧",
+        "color": "#e5c55a",
+        "clue": [
+          {
+            "t": "col",
+            "v": 0
+          }
+        ],
+        "story": {
+          "rahasia": "teknisi yang menyalakan genset diam-diam.",
+          "alibi": "memperbaiki lampu.",
+          "pengecoh": "bajunya bau solar."
+        }
+      },
+      {
+        "id": "rio",
+        "name": "Rio",
+        "role": "wartawan",
+        "avatar": "🧑‍🎤",
+        "color": "#b79ce6",
+        "clue": [
+          {
+            "t": "col",
+            "v": 5
+          }
+        ],
+        "story": {
+          "rahasia": "wartawan yang menyusup masuk.",
+          "alibi": "mencatat di lorong.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "sekar",
+        "name": "Sekar",
+        "role": "dokter muda",
+        "avatar": "👩‍🎨",
+        "color": "#f29ac4",
+        "clue": [
+          {
+            "t": "col",
+            "v": 6
+          }
+        ],
+        "story": {
+          "rahasia": "dokter muda yang pernah salah tulis diagnosis.",
+          "alibi": "mengecek ruang periksa.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "bima",
+        "name": "Bima",
+        "role": "pekerja bongkar",
+        "avatar": "🧑‍🎨",
+        "color": "#8fd18b",
+        "clue": [
+          {
+            "t": "beside",
+            "v": "arsip"
+          }
+        ],
+        "story": {
+          "rahasia": "pekerja bongkar yang menemukan peti.",
+          "alibi": "memindahkan kardus.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "darto",
+        "name": "Pak Darto",
+        "role": "penjaga lama",
+        "avatar": "👨‍🌾",
+        "color": "#8fc97a",
+        "clue": [
+          {
+            "t": "beside",
+            "v": "perkakas"
+          }
+        ],
+        "story": {
+          "rahasia": "penjaga lama yang tahu semuanya.",
+          "alibi": "berjaga di gerbang.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "hendra",
+        "name": "Pak Hendra",
+        "role": "pengawas pembongkaran",
+        "avatar": "👨‍💼",
+        "color": "#7fa7e6",
+        "victim": true
+      }
+    ]
+  },
+  {
+    "id": "pasar-malam-keliling",
+    "title": "Pasar Malam Keliling",
+    "location": "Pasar Malam Keliling, Lapangan Kota",
+    "intro": "Om Herman ditemukan tak bernyawa di tengah keramaian pasar malam, dan tujuh orang lain masih berada di sana.",
+    "story": {
+      "nada": "campuran",
+      "latar": "pasar malam keliling yang ramai dengan lampu warna-warni.",
+      "motif": "sewa lapak yang naik mendadak."
+    },
+    "rooms": [
+      "LLLLWWWW",
+      "LLLLWWWW",
+      "LLLLWWWW",
+      "LLLLWWWW",
+      "AAAAPPPP",
+      "AAAAPPPP",
+      "AAAAKKKK",
+      "AAAAKKKK"
+    ],
+    "roomInfo": {
+      "L": {
+        "name": "Area Jajanan",
+        "floor": "terracotta"
+      },
+      "W": {
+        "name": "Area Baju",
+        "floor": "darkwood"
+      },
+      "A": {
+        "name": "Area Wahana",
+        "floor": "grass"
+      },
+      "P": {
+        "name": "Panggung",
+        "floor": "stone"
+      },
+      "K": {
+        "name": "Kantor Pengelola",
+        "floor": "marble"
+      }
+    },
+    "kinds": {
+      "tungku": {
+        "name": "tungku goreng",
+        "emoji": "🔥"
+      },
+      "mejamakan": {
+        "name": "meja lapak",
+        "emoji": "🍽️"
+      },
+      "kursi": {
+        "name": "kursi",
+        "emoji": "🪑",
+        "walkable": true,
+        "seat": true
+      },
+      "bangku": {
+        "name": "bangku",
+        "emoji": "🪑",
+        "walkable": true,
+        "seat": true
+      },
+      "tikar": {
+        "name": "tikar",
+        "walkable": true,
+        "rug": true
+      },
+      "gentong": {
+        "name": "gentong air",
+        "emoji": "🏺"
+      },
+      "etalase": {
+        "name": "etalase baju",
+        "emoji": "👕"
+      },
+      "rak": {
+        "name": "rak baju",
+        "emoji": "📚"
+      },
+      "lemari": {
+        "name": "lemari baju",
+        "emoji": "🗄️"
+      },
+      "kolam": {
+        "name": "kolam bola",
+        "emoji": "🌊"
+      },
+      "tangga": {
+        "name": "tangga wahana",
+        "emoji": "🪜"
+      },
+      "tanaman": {
+        "name": "tanaman",
+        "emoji": "🪴"
+      },
+      "sepeda": {
+        "name": "sepeda kayuh",
+        "emoji": "🚲"
+      },
+      "gamelan": {
+        "name": "gamelan",
+        "emoji": "🥁"
+      },
+      "mejakerja": {
+        "name": "meja kantor",
+        "emoji": "🖥️"
+      },
+      "arsip": {
+        "name": "lemari arsip",
+        "emoji": "🗄️"
+      },
+      "kasir": {
+        "name": "mesin kasir",
+        "emoji": "🧾"
+      },
+      "kardus": {
+        "name": "tumpukan kardus",
+        "emoji": "📦"
+      }
+    },
+    "objects": [
+      {
+        "kind": "tungku",
+        "r": 0,
+        "c": 0
+      },
+      {
+        "kind": "mejamakan",
+        "r": 0,
+        "c": 2
+      },
+      {
+        "kind": "kursi",
+        "r": 2,
+        "c": 1
+      },
+      {
+        "kind": "gentong",
+        "r": 1,
+        "c": 3
+      },
+      {
+        "kind": "tikar",
+        "r": 3,
+        "c": 2,
+        "w": 2
+      },
+      {
+        "kind": "etalase",
+        "r": 0,
+        "c": 6,
+        "w": 2
+      },
+      {
+        "kind": "rak",
+        "r": 2,
+        "c": 4
+      },
+      {
+        "kind": "lemari",
+        "r": 3,
+        "c": 7
+      },
+      {
+        "kind": "bangku",
+        "r": 1,
+        "c": 5
+      },
+      {
+        "kind": "kolam",
+        "r": 4,
+        "c": 0,
+        "w": 2
+      },
+      {
+        "kind": "tangga",
+        "r": 6,
+        "c": 0,
+        "h": 2
+      },
+      {
+        "kind": "tanaman",
+        "r": 4,
+        "c": 3
+      },
+      {
+        "kind": "sepeda",
+        "r": 7,
+        "c": 2
+      },
+      {
+        "kind": "gamelan",
+        "r": 4,
+        "c": 4,
+        "w": 2
+      },
+      {
+        "kind": "bangku",
+        "r": 5,
+        "c": 6
+      },
+      {
+        "kind": "kursi",
+        "r": 4,
+        "c": 7
+      },
+      {
+        "kind": "mejakerja",
+        "r": 6,
+        "c": 4
+      },
+      {
+        "kind": "arsip",
+        "r": 6,
+        "c": 7
+      },
+      {
+        "kind": "kasir",
+        "r": 7,
+        "c": 4
+      },
+      {
+        "kind": "kardus",
+        "r": 7,
+        "c": 6,
+        "w": 2
+      }
+    ],
+    "people": [
+      {
+        "id": "tini",
+        "name": "Bu Tini",
+        "role": "pedagang",
+        "avatar": "👩‍🍳",
+        "color": "#f2a96b",
+        "clue": [
+          {
+            "t": "row",
+            "v": 2
+          }
+        ],
+        "story": {
+          "rahasia": "pedagang yang menunggak sewa.",
+          "alibi": "menggoreng pisang.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "ratna",
+        "name": "Bu Ratna",
+        "role": "pedagang baju",
+        "avatar": "👩‍🦳",
+        "color": "#f2c14e",
+        "clue": [
+          {
+            "t": "beside",
+            "v": "mejakerja"
+          }
+        ],
+        "story": {
+          "rahasia": "pedagang baju yang mencari lapak lebih strategis.",
+          "alibi": "menawarkan dagangan.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "ujang",
+        "name": "Ujang",
+        "role": "operator wahana",
+        "avatar": "🧑‍🔧",
+        "color": "#8fd18b",
+        "clue": [
+          {
+            "t": "beside",
+            "v": "kolam"
+          }
+        ],
+        "story": {
+          "rahasia": "operator wahana yang mengurangi putaran.",
+          "alibi": "menjaga wahana.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "kevin",
+        "name": "Kevin",
+        "role": "pemain sulap",
+        "avatar": "🧑‍🎤",
+        "color": "#c69be8",
+        "clue": [
+          {
+            "t": "room",
+            "v": "L"
+          },
+          {
+            "t": "beside",
+            "v": "tungku"
+          }
+        ],
+        "story": {
+          "rahasia": "pemain sulap yang digaji kurang.",
+          "alibi": "tampil di panggung kecil.",
+          "pengecoh": "topinya penuh uang receh."
+        }
+      },
+      {
+        "id": "sri",
+        "name": "Mbak Sri",
+        "role": "penyanyi dangdut",
+        "avatar": "👩‍🎤",
+        "color": "#f29ac4",
+        "clue": [
+          {
+            "t": "col",
+            "v": 7
+          }
+        ],
+        "story": {
+          "rahasia": "penyanyi dangdut yang kabur dari kontrak.",
+          "alibi": "bernyanyi.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "joko",
+        "name": "Pak Joko",
+        "role": "petugas karcis",
+        "avatar": "👨‍🦲",
+        "color": "#e5c55a",
+        "clue": [
+          {
+            "t": "col",
+            "v": 1
+          }
+        ],
+        "story": {
+          "rahasia": "petugas karcis yang menahan sebagian uang.",
+          "alibi": "menyobek karcis.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "sumi",
+        "name": "Mbok Sumi",
+        "role": "penjual jamu",
+        "avatar": "👩‍🍳",
+        "color": "#f39b7f",
+        "clue": [
+          {
+            "t": "beside",
+            "v": "gentong"
+          }
+        ],
+        "story": {
+          "rahasia": "penjual jamu yang tahu soal sewa.",
+          "alibi": "meracik jamu.",
+          "pengecoh": null
+        }
+      },
+      {
+        "id": "herman",
+        "name": "Om Herman",
+        "role": "pengelola pasar malam",
+        "avatar": "🤵",
+        "color": "#9aa5b5",
+        "victim": true
+      }
+    ]
   }
 ];

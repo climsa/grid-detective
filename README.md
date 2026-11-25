@@ -30,8 +30,8 @@ Semua script dimuat sebagai script biasa (bukan ES module), jadi tetap jalan dar
 
 Buka game → **Menu Utama**: Mulai, Pilih Kasus, Mode Khusus, Pengaturan, Cara Main, Tentang.
 
-- **Mulai** membuka kasus 1–19 pertama yang belum selesai; jika semua selesai, membuka Pilih Kasus. Mode Khusus tidak ikut dihitung.
-- **Pilih Kasus** menampilkan kasus 1–19 dengan status Terkunci / Terbuka / Selesai (`CASE_COUNT` di `src/js/ui.js`).
+- **Mulai** membuka kasus 1–23 pertama yang belum selesai; jika semua selesai, membuka Pilih Kasus. Mode Khusus tidak ikut dihitung.
+- **Pilih Kasus** menampilkan kasus 1–23 dengan status Terkunci / Terbuka / Selesai (`CASE_COUNT` di `src/js/ui.js`).
 - **Mode Khusus** adalah entri terpisah dan hanya memuat kasus 9×9 dari data (saat ini joglo-lurah); kasus 9×9 tidak ada di Pilih Kasus. Statusnya selalu Tersedia (belum ada syarat pembukaan).
 - Semua layar memakai tampilan portrait, di desktop maupun HP. Latar menu memakai `src/assets/img/menu/menu_bg_portrait.png` (cover) untuk semua lebar layar; konten menu dibatasi 480px dan di tengah.
 - `src/assets/img/menu/menu_bg_landscape.png` **tidak dipakai** oleh CSS maupun HTML. File tetap disimpan, tidak dihapus.
