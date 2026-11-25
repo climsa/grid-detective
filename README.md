@@ -50,6 +50,9 @@ Layar dikendalikan di `src/js/ui.js` (`go()`); tiap layar adalah `<section class
 | 5 | Kue Terakhir di Arisan Ibu-Ibu | 6×6 | 6 |
 | 6 | Malam Terakhir di Penginapan Kaki Gunung | 6×6 | 6 |
 | 7 | Siaran Terakhir Pak Gunawan | 6×6 | 6 |
+| 8 | Kostum yang Hilang di Pentas Tujuhbelasan | 7×7 | 7 |
+| 9 | Kain Batik yang Tertukar | 7×7 | 7 |
+| 10 | Kereta Malam ke Surabaya | 7×7 | 7 |
 | Khusus | Malam Pusaka di Rumah Joglo | 9×9 | 9 |
 
 **Mode acak** (default aktif): posisi orang dan clue disusun ulang setiap main, jawaban tetap tunggal (dicek solver). Tiap susunan punya **kode 6 angka** yang bisa dibagikan agar teman memainkan susunan yang sama. Mode ini bisa dimatikan di Pengaturan untuk memakai clue tetap.
